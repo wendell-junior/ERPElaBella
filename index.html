@@ -61,7 +61,6 @@ canvas{width:100%!important;max-width:100%;}
 .despesa-row{display:flex;gap:8px;align-items:center;margin-bottom:6px;background:#1a2236;border-radius:10px;padding:8px 10px;}
 .despesa-row input{margin:0;background:transparent;border:none;padding:4px 0;color:#f0f0f0;}
 .despesa-row input:focus{border:none;outline:none;}
-.despesa-row .d-label{font-size:12px;color:#6b7280;min-width:30px;}
 .despesa-row .btn-rm{background:#7f1d1d;padding:5px 8px;border-radius:7px;font-size:12px;min-width:30px;margin:0;}
 .pag-item{display:flex;align-items:center;justify-content:space-between;padding:8px 0;border-bottom:1px solid rgba(255,255,255,0.05);}
 .pag-pago{color:#4ade80;font-weight:700;}
@@ -77,56 +76,31 @@ canvas{width:100%!important;max-width:100%;}
 .info-lucro-box .linha.destaque{color:#4ade80;font-weight:700;}
 .info-lucro-box .linha.dizimo{color:#fde68a;font-weight:700;}
 
-/* ============ LOGIN PREMIUM ============ */
-.login-bg{
-  min-height:100vh;
-  background:radial-gradient(ellipse at 50% 0%, rgba(232,121,160,0.18) 0%, transparent 70%),
-             radial-gradient(ellipse at 80% 80%, rgba(37,99,235,0.12) 0%, transparent 60%),
-             #090d18;
-  display:flex;flex-direction:column;align-items:center;justify-content:center;
-  padding:24px;
-}
-.login-logo-wrap{
-  width:110px;height:110px;border-radius:28px;
-  background:linear-gradient(135deg,#1a0a14,#2a1020);
-  border:1.5px solid rgba(232,121,160,0.35);
-  display:flex;align-items:center;justify-content:center;
-  margin-bottom:18px;
-  box-shadow:0 0 40px rgba(232,121,160,0.18);
-  overflow:hidden;
-}
+/* CARRINHO */
+.carrinho-item{background:#0d1a2e;border:1px solid rgba(232,121,160,0.15);border-radius:12px;padding:12px;margin-bottom:8px;position:relative;}
+.carrinho-item .ci-nome{font-weight:700;font-size:14px;color:#f0f0f0;margin-bottom:4px;}
+.carrinho-item .ci-info{font-size:12px;color:#9ca3af;line-height:1.7;}
+.carrinho-item .ci-lucro{font-size:12px;color:#4ade80;}
+.carrinho-item .ci-rm{position:absolute;top:10px;right:10px;background:#7f1d1d;border:none;border-radius:7px;color:#fff;padding:4px 8px;font-size:12px;cursor:pointer;}
+.carrinho-vazio{text-align:center;padding:16px;color:#374151;font-size:13px;border:1px dashed rgba(255,255,255,0.08);border-radius:12px;margin-bottom:8px;}
+.carrinho-total{background:#131929;border:1px solid rgba(253,230,138,0.2);border-radius:12px;padding:12px;margin-bottom:10px;font-size:13px;}
+.carrinho-total .ct-linha{display:flex;justify-content:space-between;padding:2px 0;}
+.adicionar-produto-form{background:#0d1a2e;border:1px solid rgba(255,255,255,0.08);border-radius:12px;padding:12px;margin-bottom:10px;}
+
+/* LOGIN PREMIUM */
+.login-bg{min-height:100vh;background:radial-gradient(ellipse at 50% 0%,rgba(232,121,160,0.18) 0%,transparent 70%),radial-gradient(ellipse at 80% 80%,rgba(37,99,235,0.12) 0%,transparent 60%),#090d18;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:24px;}
+.login-logo-wrap{width:110px;height:110px;border-radius:28px;background:linear-gradient(135deg,#1a0a14,#2a1020);border:1.5px solid rgba(232,121,160,0.35);display:flex;align-items:center;justify-content:center;margin-bottom:18px;box-shadow:0 0 40px rgba(232,121,160,0.18);overflow:hidden;}
 .login-logo-wrap img{width:90px;height:90px;object-fit:contain;}
-.login-logo-fallback{
-  font-size:28px;font-weight:900;color:#e879a0;letter-spacing:2px;text-align:center;
-}
+.login-logo-fallback{font-size:28px;font-weight:900;color:#e879a0;letter-spacing:2px;text-align:center;}
 .login-title{font-size:28px;font-weight:900;color:#fff;letter-spacing:3px;margin-bottom:4px;text-align:center;}
 .login-sub{font-size:13px;color:#6b7280;text-align:center;margin-bottom:32px;letter-spacing:1px;}
-.login-card{
-  width:100%;max-width:340px;
-  background:rgba(19,25,41,0.95);
-  border:1px solid rgba(232,121,160,0.18);
-  border-radius:20px;padding:28px 22px;
-  box-shadow:0 8px 40px rgba(0,0,0,0.5);
-}
-.login-divider{
-  border:none;border-top:1px solid rgba(255,255,255,0.07);margin:18px 0;
-}
-.login-btn{
-  width:100%;padding:14px;margin-top:6px;
-  background:linear-gradient(135deg,#c2185b,#e879a0,#c2185b);
-  border:none;border-radius:12px;color:#fff;
-  font-size:15px;font-weight:700;letter-spacing:.5px;
-  cursor:pointer;transition:opacity .2s;
-}
+.login-card{width:100%;max-width:340px;background:rgba(19,25,41,0.95);border:1px solid rgba(232,121,160,0.18);border-radius:20px;padding:28px 22px;box-shadow:0 8px 40px rgba(0,0,0,0.5);}
+.login-divider{border:none;border-top:1px solid rgba(255,255,255,0.07);margin:18px 0;}
+.login-btn{width:100%;padding:14px;margin-top:6px;background:linear-gradient(135deg,#c2185b,#e879a0,#c2185b);border:none;border-radius:12px;color:#fff;font-size:15px;font-weight:700;letter-spacing:.5px;cursor:pointer;transition:opacity .2s;}
 .login-btn:active{opacity:.85;transform:scale(0.98);}
-.login-input{
-  width:100%;padding:13px 14px;margin:8px 0;
-  border-radius:12px;border:1px solid rgba(255,255,255,0.12);
-  background:#111827;color:#f0f0f0;font-size:15px;
-}
+.login-input{width:100%;padding:13px 14px;margin:8px 0;border-radius:12px;border:1px solid rgba(255,255,255,0.12);background:#111827;color:#f0f0f0;font-size:15px;}
 .login-input:focus{outline:none;border-color:#e879a0;box-shadow:0 0 0 2px rgba(232,121,160,0.15);}
 .login-footer{font-size:11px;color:#374151;text-align:center;margin-top:20px;}
-/* Estrelas de fundo */
 .stars{position:fixed;top:0;left:0;right:0;bottom:0;overflow:hidden;pointer-events:none;z-index:0;}
 .star{position:absolute;background:#fff;border-radius:50%;animation:twinkle linear infinite;}
 @keyframes twinkle{0%,100%{opacity:.1;}50%{opacity:.5;}}
@@ -134,7 +108,6 @@ canvas{width:100%!important;max-width:100%;}
 </head>
 <body>
 
-<!-- STARS -->
 <div class="stars" id="stars"></div>
 
 <!-- LOGIN -->
@@ -161,7 +134,6 @@ canvas{width:100%!important;max-width:100%;}
   <span id="titulo">ELA BELLA</span>
   <button class="btn-secondary" style="padding:8px 14px;" onclick="logout()">Sair</button>
 </header>
-
 <div class="container">
 
   <!-- DASHBOARD -->
@@ -200,12 +172,9 @@ canvas{width:100%!important;max-width:100%;}
   <div id="formCliente" class="hidden">
     <div class="card">
       <h3 id="tituloFormCliente" style="margin-bottom:14px;">Novo Cliente</h3>
-      <label class="lbl">Nome completo *</label>
-      <input id="nomeCliente" placeholder="Ex: Maria Silva">
-      <label class="lbl">Telefone / WhatsApp</label>
-      <input id="telCliente" placeholder="Ex: (92) 99999-9999" type="tel">
-      <label class="lbl">Cidade</label>
-      <input id="cidadeCliente" placeholder="Ex: Parintins">
+      <label class="lbl">Nome completo *</label><input id="nomeCliente" placeholder="Ex: Maria Silva">
+      <label class="lbl">Telefone / WhatsApp</label><input id="telCliente" placeholder="Ex: (92) 99999-9999" type="tel">
+      <label class="lbl">Cidade</label><input id="cidadeCliente" placeholder="Ex: Parintins">
       <button class="btn-primary btn-full" onclick="salvarCliente()">Salvar cliente</button>
     </div>
   </div>
@@ -219,14 +188,10 @@ canvas{width:100%!important;max-width:100%;}
   <div id="formProduto" class="hidden">
     <div class="card">
       <h3 id="tituloFormProduto" style="margin-bottom:14px;">Novo Produto</h3>
-      <label class="lbl">Nome do produto *</label>
-      <input id="nomeProduto" placeholder="Ex: Vestido Floral">
-      <label class="lbl">Custo (R$)</label>
-      <input id="custoProduto" type="number" placeholder="0,00">
-      <label class="lbl">Preço de venda (R$)</label>
-      <input id="precoProduto" type="number" placeholder="0,00">
-      <label class="lbl">Quantidade em estoque</label>
-      <input id="estoqueProduto" type="number" placeholder="0">
+      <label class="lbl">Nome do produto *</label><input id="nomeProduto" placeholder="Ex: Vestido Floral">
+      <label class="lbl">Custo (R$)</label><input id="custoProduto" type="number" placeholder="0,00">
+      <label class="lbl">Preço de venda (R$)</label><input id="precoProduto" type="number" placeholder="0,00">
+      <label class="lbl">Quantidade em estoque</label><input id="estoqueProduto" type="number" placeholder="0">
       <button class="btn-primary btn-full" onclick="salvarProduto()">Salvar produto</button>
     </div>
   </div>
@@ -235,39 +200,71 @@ canvas{width:100%!important;max-width:100%;}
   <div id="vendasTela" class="hidden">
     <div class="card">
       <h3 style="margin-bottom:14px;">Nova Venda</h3>
+
       <label class="lbl">Cliente</label>
       <select id="clienteVenda"></select>
-      <label class="lbl">Produto</label>
-      <select id="produtoVenda" onchange="atualizarInfoVenda()"></select>
 
-      <!-- DESPESAS ADICIONAIS -->
-      <div style="display:flex;align-items:center;justify-content:space-between;margin-top:12px;">
-        <label class="lbl" style="margin:0;">Despesas adicionais</label>
-        <button onclick="addDespesa()" class="btn-secondary" style="padding:5px 10px;font-size:12px;margin:0;">+ Adicionar</button>
+      <!-- CARRINHO -->
+      <div style="display:flex;align-items:center;justify-content:space-between;margin-top:14px;margin-bottom:6px;">
+        <label class="lbl" style="margin:0;">Produtos no carrinho</label>
+        <button onclick="mostrarAdicionarProduto()" class="btn-primary" style="padding:6px 12px;font-size:12px;margin:0;">+ Adicionar produto</button>
       </div>
-      <div id="listaDespesas" style="margin-top:6px;"></div>
 
-      <!-- RESUMO DE LUCRO -->
-      <div id="infoLucroVenda" class="info-lucro-box hidden"></div>
+      <!-- FORM ADICIONAR PRODUTO AO CARRINHO -->
+      <div id="formAdicionarProduto" class="adicionar-produto-form hidden">
+        <label class="lbl" style="margin-top:0;">Produto</label>
+        <select id="selectProdutoCarrinho" onchange="atualizarInfoCarrinho()"></select>
+        <div id="infoCarrinhoProduto" style="font-size:12px;color:#9ca3af;padding:4px 0;"></div>
+        <div class="row" style="margin-top:8px;">
+          <button onclick="confirmarAdicionarProduto()" class="btn-green" style="flex:2;">Adicionar ao carrinho</button>
+          <button onclick="cancelarAdicionarProduto()" class="btn-secondary" style="flex:1;">Cancelar</button>
+        </div>
+      </div>
 
-      <label class="lbl">Tipo de pagamento</label>
-      <select id="tipoVenda" onchange="toggleParcelas();atualizarInfoVenda()">
-        <option value="avista">À vista (pago)</option>
-        <option value="fiado">Fiado (sem parcelas)</option>
-        <option value="parcelado">Parcelado (automático)</option>
-        <option value="manual">Parcelas manuais</option>
-      </select>
-      <div id="blocoParcelasAuto" class="hidden">
-        <label class="lbl">Número de parcelas</label>
-        <input id="numParcelas" type="number" placeholder="Ex: 3" min="1" value="1" onchange="atualizarInfoVenda()">
+      <!-- ITENS DO CARRINHO -->
+      <div id="listaCarrinho"></div>
+
+      <!-- RESUMO DO CARRINHO -->
+      <div id="resumoCarrinho" class="carrinho-total hidden">
+        <!-- DESPESAS GERAIS DA VENDA -->
+        <div style="border-bottom:1px solid rgba(255,255,255,0.07);padding-bottom:10px;margin-bottom:10px;">
+          <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:6px;">
+            <span style="font-size:11px;color:#6b7280;text-transform:uppercase;letter-spacing:.5px;">Despesas gerais da venda</span>
+            <button onclick="addDespesaGeral()" class="btn-secondary" style="padding:4px 10px;font-size:11px;margin:0;">+ Adicionar</button>
+          </div>
+          <div id="listaDespesasGerais"></div>
+          <p class="small" style="margin-top:4px;color:#4b5563;">Divididas igualmente entre as peças para calcular o lucro real.</p>
+        </div>
+        <div class="ct-linha"><span style="color:#9ca3af;">Total da compra</span><span id="ctTotal" style="color:#e879a0;font-weight:700;"></span></div>
+        <div class="ct-linha"><span style="color:#9ca3af;">Despesas gerais</span><span id="ctDesp" style="color:#f87171;font-weight:700;"></span></div>
+        <div class="ct-linha"><span style="color:#9ca3af;">Lucro real total</span><span id="ctLucro" style="color:#4ade80;font-weight:700;"></span></div>
+        <div class="ct-linha"><span style="color:#9ca3af;">Dízimo total (10%)</span><span id="ctDizimo" style="color:#fde68a;font-weight:700;"></span></div>
+        <div class="ct-linha" style="margin-top:4px;padding-top:6px;border-top:1px solid rgba(255,255,255,0.07);"><span style="color:#9ca3af;">Peças no carrinho</span><span id="ctQtd" style="color:#93c5fd;font-weight:700;"></span></div>
       </div>
-      <div id="blocoParcelasManual" class="hidden">
-        <div class="lbl" style="margin-top:10px;">Parcelas manuais</div>
-        <div id="listaParcManual"></div>
-        <button onclick="addParcelaManual()" class="btn-secondary" style="width:100%;margin-top:6px;">+ Adicionar parcela</button>
+
+      <!-- PAGAMENTO -->
+      <div id="blocoFormaPagamento" class="hidden">
+        <label class="lbl">Forma de pagamento</label>
+        <select id="tipoVenda" onchange="toggleParcelas()">
+          <option value="avista">À vista (pago)</option>
+          <option value="fiado">Fiado (sem parcelas)</option>
+          <option value="parcelado">Parcelado (automático)</option>
+          <option value="manual">Parcelas manuais (valores livres)</option>
+        </select>
+        <div id="blocoParcelasAuto" class="hidden">
+          <label class="lbl">Número de parcelas</label>
+          <input id="numParcelas" type="number" placeholder="Ex: 3" min="1" value="1">
+        </div>
+        <div id="blocoParcelasManual" class="hidden">
+          <div class="lbl" style="margin-top:10px;">Parcelas manuais (valores livres)</div>
+          <p class="small" style="margin-bottom:6px;">Ideal para pagamentos irregulares. O dízimo é calculado proporcionalmente ao valor pago em cada parcela.</p>
+          <div id="listaParcManual"></div>
+          <button onclick="addParcelaManual()" class="btn-secondary" style="width:100%;margin-top:6px;">+ Adicionar parcela</button>
+        </div>
+        <button class="btn-primary btn-full" style="margin-top:12px;" onclick="registrarVenda()">Confirmar venda</button>
       </div>
-      <button class="btn-primary btn-full" style="margin-top:12px;" onclick="registrarVenda()">Registrar venda</button>
     </div>
+
     <div class="secao">Histórico de Vendas</div>
     <input id="buscaVenda" placeholder="Buscar por cliente ou produto..." onkeyup="renderVendas()">
     <div id="listaVendas"></div>
@@ -277,26 +274,19 @@ canvas{width:100%!important;max-width:100%;}
   <div id="financeiro" class="hidden">
     <div class="card">
       <h3 style="margin-bottom:14px;">Novo Lançamento</h3>
-      <label class="lbl">Descrição</label>
-      <input id="descFin" placeholder="Ex: Compra de estoque">
-      <label class="lbl">Valor (R$)</label>
-      <input id="valorFin" type="number" placeholder="0,00">
+      <label class="lbl">Descrição</label><input id="descFin" placeholder="Ex: Compra de estoque">
+      <label class="lbl">Valor (R$)</label><input id="valorFin" type="number" placeholder="0,00">
       <label class="lbl">Tipo</label>
-      <select id="tipoFin">
-        <option value="entrada">Entrada</option>
-        <option value="saida">Saída</option>
-      </select>
+      <select id="tipoFin"><option value="entrada">Entrada</option><option value="saida">Saída</option></select>
       <button class="btn-primary btn-full" onclick="addFin()">Salvar lançamento</button>
     </div>
     <div class="filtro-bar">
-      <div><label class="lbl">Filtro rápido (mês)</label><input type="month" id="mesFin" onchange="sincMesFin()" style="margin:0;"></div>
+      <div><label class="lbl">Mês</label><input type="month" id="mesFin" onchange="sincMesFin()" style="margin:0;"></div>
       <div><label class="lbl">De</label><input type="date" id="finDe" onchange="limparMesFin()" style="margin:0;"></div>
       <div><label class="lbl">Até</label><input type="date" id="finAte" onchange="limparMesFin()" style="margin:0;"></div>
       <div><label class="lbl">Tipo</label>
         <select id="finTipoFiltro" onchange="renderFin()" style="margin:0;">
-          <option value="todos">Todos</option>
-          <option value="entrada">Só Entradas</option>
-          <option value="saida">Só Saídas</option>
+          <option value="todos">Todos</option><option value="entrada">Entradas</option><option value="saida">Saídas</option>
         </select>
       </div>
       <div style="display:flex;align-items:flex-end;"><button class="btn-secondary" style="margin:0;padding:10px 12px;" onclick="limparFiltrosFin()">Limpar</button></div>
@@ -307,7 +297,7 @@ canvas{width:100%!important;max-width:100%;}
   <!-- FECHAMENTO -->
   <div id="fechamento" class="hidden">
     <div class="filtro-bar">
-      <div><label class="lbl">Filtro rápido (mês)</label><input type="month" id="mes" onchange="sincMesFech()" style="margin:0;"></div>
+      <div><label class="lbl">Mês</label><input type="month" id="mes" onchange="sincMesFech()" style="margin:0;"></div>
       <div><label class="lbl">De</label><input type="date" id="fechDe" onchange="limparMesFech()" style="margin:0;"></div>
       <div><label class="lbl">Até</label><input type="date" id="fechAte" onchange="limparMesFech()" style="margin:0;"></div>
       <div style="display:flex;align-items:flex-end;"><button class="btn-primary" style="margin:0;padding:10px 14px;" onclick="fechar()">Aplicar</button></div>
@@ -324,33 +314,23 @@ canvas{width:100%!important;max-width:100%;}
         <div class="lbl" style="margin-bottom:10px;">Resumo do período</div>
         <canvas id="chartFechamento" height="200"></canvas>
       </div>
-      <div class="secao">Vendas do período</div>
-      <div id="detalheMesVendas"></div>
-      <div class="secao">Lançamentos financeiros do período</div>
-      <div id="detalheMesFin"></div>
+      <div class="secao">Vendas do período</div><div id="detalheMesVendas"></div>
+      <div class="secao">Financeiro do período</div><div id="detalheMesFin"></div>
     </div>
   </div>
 
   <!-- DÍZIMO -->
   <div id="dizimo" class="hidden">
     <div class="dash-grid">
-      <div class="dash-card" style="border-color:rgba(253,230,138,0.2);">
-        <div class="lbl">Total dízimo</div>
-        <div class="val" id="dizimoTotal" style="color:#fde68a;"></div>
-      </div>
-      <div class="dash-card" style="border-color:rgba(253,230,138,0.2);">
-        <div class="lbl">Parcelas</div>
-        <div class="val" id="dizimoQtd" style="color:#fde68a;"></div>
-      </div>
+      <div class="dash-card" style="border-color:rgba(253,230,138,0.2);"><div class="lbl">Total dízimo</div><div class="val" id="dizimoTotal" style="color:#fde68a;"></div></div>
+      <div class="dash-card" style="border-color:rgba(253,230,138,0.2);"><div class="lbl">Registros</div><div class="val" id="dizimoQtd" style="color:#fde68a;"></div></div>
     </div>
-
     <div class="filtro-bar">
-      <div><label class="lbl">Filtro rápido (mês)</label><input type="month" id="mesDizimo" onchange="sincMesDizimo()" style="margin:0;"></div>
+      <div><label class="lbl">Mês</label><input type="month" id="mesDizimo" onchange="sincMesDizimo()" style="margin:0;"></div>
       <div><label class="lbl">De</label><input type="date" id="dizimoDe" onchange="limparMesDizimo()" style="margin:0;"></div>
       <div><label class="lbl">Até</label><input type="date" id="dizimoAte" onchange="limparMesDizimo()" style="margin:0;"></div>
       <div style="display:flex;align-items:flex-end;"><button class="btn-secondary" style="margin:0;padding:10px 12px;" onclick="limparFiltrosDizimo()">Limpar</button></div>
     </div>
-
     <div id="listaDizimo"></div>
   </div>
 
@@ -358,7 +338,7 @@ canvas{width:100%!important;max-width:100%;}
   <div id="backup" class="hidden">
     <div class="card">
       <h3 style="margin-bottom:10px;">Gerar Backup</h3>
-      <p class="small" style="margin-bottom:12px;">Baixa um arquivo .json com todos os dados. Guarde no celular, e-mail ou nuvem.</p>
+      <p class="small" style="margin-bottom:12px;">Baixa um arquivo .json com todos os dados.</p>
       <button class="btn-blue btn-full" onclick="gerarBackup()">Baixar backup agora</button>
     </div>
     <div class="card" style="margin-top:10px;">
@@ -375,8 +355,8 @@ canvas{width:100%!important;max-width:100%;}
   </div>
 
   <button id="fab" class="fab" onclick="novo()">+</button>
-</div><!-- fim container -->
-</div><!-- fim app -->
+</div>
+</div>
 
 <!-- MODAL EDITAR VENDA -->
 <div id="modalVenda" class="modal-overlay">
@@ -384,13 +364,10 @@ canvas{width:100%!important;max-width:100%;}
     <div class="modal-handle"></div>
     <h3>Editar Venda</h3>
     <label class="lbl">Cliente</label><select id="editVendaCliente"></select>
-    <label class="lbl">Produto</label><select id="editVendaProduto"></select>
     <label class="lbl">Tipo de pagamento</label>
     <select id="editVendaTipo" onchange="toggleEditParcelas()">
-      <option value="avista">À vista (pago)</option>
-      <option value="fiado">Fiado</option>
-      <option value="parcelado">Parcelado (automático)</option>
-      <option value="manual">Parcelas manuais</option>
+      <option value="avista">À vista</option><option value="fiado">Fiado</option>
+      <option value="parcelado">Parcelado (automático)</option><option value="manual">Parcelas manuais</option>
     </select>
     <div id="editBlocoAuto" class="hidden">
       <label class="lbl">Número de parcelas</label>
@@ -450,19 +427,22 @@ canvas{width:100%!important;max-width:100%;}
 var tela="dashboard",edit=null,editVendaIdx=null,editFinIdx=null,editDizimoIdx=null,dadosRestore=null;
 var chartVL=null,chartFin=null,chartFech=null;
 var clienteDetalheIdx=null,produtoDetalheIdx=null;
-var despesasCount=0,parcelasManualCount=0,editParcelasManualCount=0;
+var parcelasManualCount=0,editParcelasManualCount=0;
+var despesasCarrinhoCount=0;
+
+// CARRINHO: array de { produto: obj, despesas: [], lucroReal: num }
+var carrinho=[];
 
 var db=JSON.parse(localStorage.getItem("db"))||{clientes:[],produtos:[],vendas:[],financeiro:[],estoqueHist:[],dizimo:[]};
 if(!db.estoqueHist)db.estoqueHist=[];
 if(!db.dizimo)db.dizimo=[];
 db.clientes.forEach(function(c){if(!c.tel)c.tel="";if(!c.cidade)c.cidade="";});
 
-// Estrelas do login
+// Estrelas
 (function(){
   var s=document.getElementById("stars");
   for(var i=0;i<60;i++){
-    var el=document.createElement("div");
-    el.className="star";
+    var el=document.createElement("div");el.className="star";
     var sz=Math.random()*2+1;
     el.style.cssText="width:"+sz+"px;height:"+sz+"px;top:"+Math.random()*100+"%;left:"+Math.random()*100+"%;animation-duration:"+(Math.random()*4+2)+"s;animation-delay:"+(Math.random()*4)+"s;";
     s.appendChild(el);
@@ -482,8 +462,7 @@ function strParaDate(s){
   return new Date(p[2]+"-"+p[1]+"-"+p[0]+"T00:00:00");
 }
 function mesAno(dataStr){
-  var d=strParaDate(dataStr);
-  if(!d||isNaN(d))return"";
+  var d=strParaDate(dataStr);if(!d||isNaN(d))return"";
   return d.getFullYear()+"-"+String(d.getMonth()+1).padStart(2,"0");
 }
 function dentroIntervalo(dataStr,de,ate){
@@ -508,11 +487,8 @@ function login(){
   if(!v){alert("Digite a senha");return;}
   var s=localStorage.getItem("senha");
   if(!s){localStorage.setItem("senha",v);s=v;}
-  if(v===s){
-    document.getElementById("loginScreen").classList.add("hidden");
-    document.getElementById("app").classList.remove("hidden");
-    render();
-  } else alert("Senha incorreta");
+  if(v===s){document.getElementById("loginScreen").classList.add("hidden");document.getElementById("app").classList.remove("hidden");render();}
+  else alert("Senha incorreta");
 }
 function logout(){location.reload();}
 
@@ -521,11 +497,8 @@ function logout(){location.reload();}
 // ============================================================
 function ir(t){
   document.getElementById(tela).classList.add("hidden");
-  tela=t;
-  document.getElementById(tela).classList.remove("hidden");
-  document.getElementById("titulo").innerText=
-    t==="vendasTela"?"VENDAS":t==="dashboard"?"ELA BELLA":
-    t==="dizimo"?"DÍZIMO":t.toUpperCase();
+  tela=t;document.getElementById(tela).classList.remove("hidden");
+  document.getElementById("titulo").innerText=t==="vendasTela"?"VENDAS":t==="dashboard"?"ELA BELLA":t==="dizimo"?"DÍZIMO":t.toUpperCase();
   document.getElementById("fab").style.display=(t==="clientes"||t==="produtos")?"block":"none";
   render();
 }
@@ -540,7 +513,6 @@ function novo(){
   if(tela==="clientes"){edit=null;["nomeCliente","telCliente","cidadeCliente"].forEach(function(id){document.getElementById(id).value="";});document.getElementById("tituloFormCliente").innerText="Novo Cliente";ir("formCliente");}
   if(tela==="produtos"){edit=null;["nomeProduto","custoProduto","precoProduto","estoqueProduto"].forEach(function(id){document.getElementById(id).value="";});document.getElementById("tituloFormProduto").innerText="Novo Produto";ir("formProduto");}
 }
-
 function abrirModal(id){document.getElementById(id).classList.add("ativo");}
 function fecharModal(id){document.getElementById(id).classList.remove("ativo");}
 
@@ -557,9 +529,8 @@ function salvarCliente(){
 }
 function excluirCliente(i){
   var c=db.clientes[i];
-  var temVendas=db.vendas.some(function(v){return v.cliente===c.nome;});
   var msg="Excluir o cliente \""+c.nome+"\"?";
-  if(temVendas)msg+="\n\nAtenção: este cliente possui vendas registradas. As vendas NÃO serão excluídas.";
+  if(db.vendas.some(function(v){return v.cliente===c.nome;}))msg+="\n\nAtenção: possui vendas registradas. As vendas não serão excluídas.";
   if(!confirm(msg))return;
   db.clientes.splice(i,1);save();ir("clientes");
 }
@@ -569,6 +540,22 @@ function abrirCliente(i){
   var hist="";
   db.vendas.forEach(function(v,vi){
     if(v.cliente!==c.nome)return;
+
+    // Itens do carrinho ou produto único
+    var itensHtml="";
+    if(v.itens&&v.itens.length>0){
+      itensHtml='<div style="margin:6px 0 4px;"><div class="small" style="color:#6b7280;margin-bottom:3px;">Peças:</div>'+
+        v.itens.map(function(it){
+          var despHtml=it.despesas&&it.despesas.length>0?
+            it.despesas.map(function(d){return' <span class="small" style="color:#f87171;">(+'+d.desc+' '+fmt(d.valor)+')</span>';}).join(""):
+            "";
+          return'<div class="small">• '+it.nome+' — '+fmt(it.preco)+despHtml+' | Lucro: <span style="color:#4ade80;">'+fmt(it.lucroReal)+'</span></div>';
+        }).join("")+
+      '</div>';
+    } else if(v.produto){
+      itensHtml='<div class="small">Produto: <b>'+v.produto+'</b>'+(v.lucroReal!=null?' | Lucro: <span style="color:#4ade80;">'+fmt(v.lucroReal)+'</span>':'')+'</div>';
+    }
+
     var rows=v.parcelas.map(function(p,pi){
       var pago=p.pago;
       var desc=p.desc||(v.parcelas.length===1?"Total":"Parcela "+p.num);
@@ -580,26 +567,15 @@ function abrirCliente(i){
       '</div>';
     }).join("");
 
-    // Despesas desta venda
-    var despHtml="";
-    if(v.despesas&&v.despesas.length>0){
-      despHtml='<div style="font-size:11px;color:#6b7280;margin:4px 0 2px;">Despesas adicionais:</div>'+
-        v.despesas.map(function(d){return'<div class="small" style="display:flex;justify-content:space-between;">'+
-          '<span>'+d.desc+'</span><span style="color:#f87171;">'+fmt(d.valor)+'</span></div>';}).join("");
-    }
-
-    var lucroLabel=v.lucroReal!=null?
-      '<span class="small" style="color:#4ade80;">Lucro real: '+fmt(v.lucroReal)+'</span>':'';
-
     hist+='<div class="card" style="margin-bottom:8px;">'+
       '<div style="display:flex;justify-content:space-between;align-items:flex-start;">'+
-        '<div><b>'+v.produto+'</b><br><span class="small">'+v.data+'</span><br>'+
-        '<span style="color:#e879a0;font-size:13px;">'+fmt(v.valor)+'</span> '+lucroLabel+'</div>'+
+        '<div style="flex:1;"><span style="color:#e879a0;font-size:15px;font-weight:700;">'+fmt(v.valor)+'</span>'+
+        ' <span class="small">'+v.data+'</span></div>'+
       '</div>'+
-      despHtml+rows+
+      itensHtml+rows+
       '<div class="acoes">'+
-        '<button class="btn-warning" onclick="abrirEdicaoVenda('+vi+')">Editar venda</button>'+
-        '<button class="btn-danger" onclick="excluirVendaDeCliente('+vi+')">Excluir venda</button>'+
+        '<button class="btn-warning" onclick="abrirEdicaoVenda('+vi+')">Editar</button>'+
+        '<button class="btn-danger" onclick="excluirVendaDeCliente('+vi+')">Excluir</button>'+
       '</div>'+
     '</div>';
   });
@@ -629,44 +605,85 @@ function editarCliente(i){
 function excluirVendaDeCliente(vi){excluirVenda(vi,true);}
 
 // ============================================================
-// PAGAR PARCELA — com pergunta de dízimo
+// PAGAR PARCELA — dízimo proporcional por peça
 // ============================================================
 function pagarParcela(vi,pi){
   var v=db.vendas[vi];
   var p=v.parcelas[pi];
-  p.pago=true;
-  p.dataPag=hoje();
+  p.pago=true;p.dataPag=hoje();
   var valorParcela=p.valor||(v.valor/v.parcelas.length);
+  var descParcela=p.desc||("Parcela "+p.num);
+
   var c=db.clientes.find(function(x){return x.nome===v.cliente;});
   if(c){c.saldo-=valorParcela;if(c.saldo<0)c.saldo=0;}
 
-  // Registrar no financeiro
-  db.financeiro.push({desc:"Parcela paga: "+v.produto+" ("+v.cliente+")",valor:valorParcela,tipo:"entrada",data:hoje()});
+  // Descrição detalhada para o financeiro
+  var nomesItens=v.itens&&v.itens.length>0?v.itens.map(function(it){return it.nome;}).join(", "):(v.produto||"venda");
+  var descFin=descParcela+": "+nomesItens+" ("+v.cliente+") — "+fmt(valorParcela);
+  db.financeiro.push({
+    desc:descFin,
+    valor:valorParcela,tipo:"entrada",data:hoje(),
+    _detalhe:{
+      cliente:v.cliente,
+      itens:v.itens||[],
+      despesasGerais:v.despesasGerais||[],
+      totalDesp:v.totalDespesasGerais||0,
+      descParcela:descParcela,
+      valorParcela:valorParcela,
+      totalVenda:v.valor,
+      tipo:"parcela"
+    }
+  });
 
-  // DÍZIMO — calcular 10% do lucro real desta parcela
-  if(v.lucroReal!=null&&v.lucroReal>0){
-    var totalParcelas=v.parcelas.length;
-    var lucroParcela=v.lucroReal/totalParcelas;
-    var valorDizimo=parseFloat((lucroParcela*0.1).toFixed(2));
-    if(valorDizimo>0){
-      var descParcela=p.desc||("Parcela "+p.num);
-      var msg="Parcela registrada como paga!\n\n"+
-        "Deseja registrar o dízimo desta parcela?\n"+
-        "━━━━━━━━━━━━━━━━━━\n"+
-        "Produto: "+v.produto+"\n"+
+  // DÍZIMO PROPORCIONAL
+  var proporcao=v.valor>0?valorParcela/v.valor:0;
+  var lucroRealTotal=v.lucroReal||0;
+
+  if(lucroRealTotal>0&&proporcao>0){
+    var lucroDessaParcela=parseFloat((lucroRealTotal*proporcao).toFixed(2));
+    var dizimoDessaParcela=parseFloat((lucroDessaParcela*0.1).toFixed(2));
+
+    if(dizimoDessaParcela>0){
+      // Detalhamento por peça proporcional
+      var detalhePecas="";
+      var itensRef=v.itens&&v.itens.length>0?v.itens:[{nome:v.produto,lucroReal:v.lucroReal}];
+      if(itensRef.length>1){
+        detalhePecas="\n\nPor peça:";
+        itensRef.forEach(function(it){
+          var lp=parseFloat(((it.lucroReal||0)*proporcao).toFixed(2));
+          detalhePecas+="\n  • "+it.nome+": lucro "+fmt(lp)+" → dízimo "+fmt(lp*0.1);
+        });
+      }
+      if(v.despesasGerais&&v.despesasGerais.length>0){
+        detalhePecas+="\n\nDespesas gerais ("+fmt(v.totalDespesasGerais||0)+" ÷ "+(v.itens?v.itens.length:1)+" peças):";
+        v.despesasGerais.forEach(function(d){detalhePecas+="\n  • "+d.desc+": "+fmt(d.valor);});
+      }
+
+      var msg="Pagamento registrado!\n\nDeseja registrar o dízimo?\n━━━━━━━━━━━━━━━━━━\n"+
         "Cliente: "+v.cliente+"\n"+
         "Parcela: "+descParcela+" ("+fmt(valorParcela)+")\n"+
-        "Lucro desta parcela: "+fmt(lucroParcela)+"\n"+
-        "10% de dízimo: "+fmt(valorDizimo)+"\n"+
-        "━━━━━━━━━━━━━━━━━━\n"+
-        "Sim = registrar no histórico de dízimo\nNão = ignorar";
+        "Proporção paga: "+(proporcao*100).toFixed(1)+"%\n"+
+        "Lucro proporcional: "+fmt(lucroDessaParcela)+"\n"+
+        "Dízimo (10%): "+fmt(dizimoDessaParcela)+
+        detalhePecas+"\n━━━━━━━━━━━━━━━━━━\nSim = registrar no dízimo";
+
       if(confirm(msg)){
         db.dizimo.push({
-          desc:"Dízimo: "+v.produto+" — "+descParcela+" ("+v.cliente+")",
-          valor:valorDizimo,
-          lucroRef:lucroParcela,
-          vendaIdx:vi,
-          parcelaIdx:pi,
+          desc:"Dízimo: "+nomesItens+" — "+descParcela+" ("+v.cliente+") — "+fmt(dizimoDessaParcela),
+          valor:dizimoDessaParcela,
+          lucroRef:lucroDessaParcela,
+          proporcao:proporcao,
+          _detalhe:{
+            cliente:v.cliente,
+            itens:v.itens||[],
+            despesasGerais:v.despesasGerais||[],
+            totalDesp:v.totalDespesasGerais||0,
+            lucroReal:lucroDessaParcela,
+            descParcela:descParcela,
+            valorParcela:valorParcela,
+            totalVenda:v.valor,
+            proporcao:proporcao
+          },
           data:hoje()
         });
       }
@@ -674,7 +691,6 @@ function pagarParcela(vi,pi){
   }
 
   save();
-  // Recarregar detalhe do cliente
   if(clienteDetalheIdx!=null){
     var ci=db.clientes.findIndex(function(x){return x.nome===v.cliente;});
     if(ci>=0){clienteDetalheIdx=ci;abrirCliente(ci);}
@@ -702,27 +718,28 @@ function salvarProduto(){
   ir("produtos");save();
 }
 function excluirProduto(i){
-  var p=db.produtos[i];
-  var msg="Excluir o produto \""+p.nome+"\"?";
-  if(db.vendas.some(function(v){return v.produto===p.nome;}))msg+="\n\nAtenção: possui vendas registradas.";
-  if(!confirm(msg))return;
-  db.produtos.splice(i,1);save();ir("produtos");
+  var p=db.produtos[i];var msg="Excluir o produto \""+p.nome+"\"?";
+  if(db.vendas.some(function(v){return v.produto===p.nome||(v.itens&&v.itens.some(function(it){return it.nome===p.nome;}));}))msg+="\n\nAtenção: possui vendas registradas.";
+  if(!confirm(msg))return;db.produtos.splice(i,1);save();ir("produtos");
 }
 function abrirProduto(i){
-  produtoDetalheIdx=i;var p=db.produtos[i];
-  var eventos=[];
+  produtoDetalheIdx=i;var p=db.produtos[i];var eventos=[];
   db.vendas.forEach(function(v,vi){
-    if(v.produto!==p.nome)return;
+    // Verificar em itens (multi-produto) e produto único (legado)
+    var inItens=v.itens&&v.itens.some(function(it){return it.nome===p.nome;});
+    var inProduto=v.produto===p.nome;
+    if(!inItens&&!inProduto)return;
     var pagas=v.parcelas.filter(function(x){return x.pago;}).length;
     var total=v.parcelas.length;
+    var label=v.itens&&v.itens.length>1?"(+"+v.itens.length+" peças)":"";
     eventos.push({data:v.data,dataSort:strParaDate(v.data),tipo:"venda",
-      texto:'Venda para <b>'+v.cliente+'</b> — '+fmt(v.valor),
+      texto:'Venda para <b>'+v.cliente+'</b> '+label+' — '+fmt(v.valor),
       badge:'<span class="badge '+(pagas>=total?"badge-verde":"badge-vermelho")+'">'+(pagas>=total?"Quitado":"Pend. "+pagas+"/"+total)+'</span>'});
   });
   db.estoqueHist.forEach(function(h){
     if(h.produto!==p.nome)return;
     eventos.push({data:h.data,dataSort:strParaDate(h.data),tipo:h.tipo==="entrada"?"estoque_entrada":"estoque_saida",
-      texto:(h.tipo==="entrada"?"Entrada de estoque":"Saída de estoque")+': <b>'+h.qtd+' unidades</b>'+(h.obs?' — '+h.obs:"")});
+      texto:(h.tipo==="entrada"?"Entrada":"Saída")+' de estoque: <b>'+h.qtd+' unidades</b>'+(h.obs?' — '+h.obs:"")});
   });
   eventos.sort(function(a,b){return(b.dataSort||0)-(a.dataSort||0);});
   var histHTML=eventos.length===0?'<div class="small" style="padding:8px 0;color:#6b7280;">Nenhum histórico ainda</div>':
@@ -739,8 +756,8 @@ function abrirProduto(i){
       '<div class="small">Preço de venda<br><b>'+fmt(p.preco)+'</b></div>'+
     '</div></div>'+
     '<div class="row" style="margin-bottom:10px;">'+
-      '<button class="btn-primary" onclick="editarProduto('+i+')">Editar produto</button>'+
-      '<button class="btn-danger" onclick="excluirProduto('+i+')">Excluir produto</button>'+
+      '<button class="btn-primary" onclick="editarProduto('+i+')">Editar</button>'+
+      '<button class="btn-danger" onclick="excluirProduto('+i+')">Excluir</button>'+
     '</div>'+
     '<div class="secao">Histórico de Movimentação</div>'+
     '<div class="card">'+histHTML+'</div>';
@@ -748,81 +765,130 @@ function abrirProduto(i){
 }
 function editarProduto(i){
   edit=i;var p=db.produtos[i];
-  document.getElementById("nomeProduto").value=p.nome;
-  document.getElementById("custoProduto").value=p.custo;
-  document.getElementById("precoProduto").value=p.preco;
-  document.getElementById("estoqueProduto").value=p.estoque;
-  document.getElementById("tituloFormProduto").innerText="Editar Produto";
-  ir("formProduto");
+  document.getElementById("nomeProduto").value=p.nome;document.getElementById("custoProduto").value=p.custo;
+  document.getElementById("precoProduto").value=p.preco;document.getElementById("estoqueProduto").value=p.estoque;
+  document.getElementById("tituloFormProduto").innerText="Editar Produto";ir("formProduto");
 }
 
 // ============================================================
-// DESPESAS ADICIONAIS (nova venda)
+// CARRINHO — NOVA VENDA MULTI-PRODUTO
 // ============================================================
-function addDespesa(){
-  var c=++despesasCount;
-  var div=document.createElement("div");
-  div.className="despesa-row";div.id="desp-"+c;
-  div.innerHTML='<input type="text" placeholder="Ex: Embalagem" id="dd-'+c+'" style="flex:2;">'+
-    '<input type="number" placeholder="R$" id="dv-'+c+'" style="flex:1;" onchange="atualizarInfoVenda()">'+
-    '<button class="btn-rm" onclick="removerDesp('+c+')">✕</button>';
-  document.getElementById("listaDespesas").appendChild(div);
-  // Reposicionar listener de mudança
-  document.getElementById("dv-"+c).addEventListener("input",atualizarInfoVenda);
+function popularSelectProdutoCarrinho(){
+  var s=document.getElementById("selectProdutoCarrinho");
+  s.innerHTML=db.produtos.filter(function(p){return p.estoque>0;}).map(function(p){return'<option>'+p.nome+'</option>';}).join("");
+  atualizarInfoCarrinho();
 }
-function removerDesp(c){var el=document.getElementById("desp-"+c);if(el){el.remove();atualizarInfoVenda();}}
-function coletarDespesas(){
-  var rows=document.getElementById("listaDespesas").querySelectorAll(".despesa-row");
+function mostrarAdicionarProduto(){
+  document.getElementById("formAdicionarProduto").classList.remove("hidden");
+  popularSelectProdutoCarrinho();
+}
+function cancelarAdicionarProduto(){
+  document.getElementById("formAdicionarProduto").classList.add("hidden");
+}
+function atualizarInfoCarrinho(){
+  var nome=document.getElementById("selectProdutoCarrinho").value;
+  var p=db.produtos.find(function(x){return x.nome===nome;});
+  if(p){
+    document.getElementById("infoCarrinhoProduto").innerHTML=
+      'Preço: <b style="color:#e879a0;">'+fmt(p.preco)+'</b> | Custo: '+fmt(p.custo)+' | Lucro base: <b style="color:#4ade80;">'+fmt(p.preco-p.custo)+'</b>';
+  }
+}
+function addDespesaCarrinho(){
+  var c=++despesasCarrinhoCount;
+  var div=document.createElement("div");div.className="despesa-row";div.id="dc-"+c;
+  div.innerHTML='<input type="text" placeholder="Ex: Embalagem" id="dcd-'+c+'" style="flex:2;color:#f0f0f0;">'+
+    '<input type="number" placeholder="R$" id="dcv-'+c+'" style="flex:1;color:#f0f0f0;">'+
+    '<button class="btn-rm" onclick="removerDespesaCarrinho('+c+')">✕</button>';
+  document.getElementById("listaDespesasCarrinho").appendChild(div);
+}
+function removerDespesaCarrinho(c){var el=document.getElementById("dc-"+c);if(el)el.remove();}
+function confirmarAdicionarProduto(){
+  var nome=document.getElementById("selectProdutoCarrinho").value;
+  var p=db.produtos.find(function(x){return x.nome===nome;});
+  if(!p){alert("Selecione um produto.");return;}
+  if(p.estoque<=0){alert("Produto sem estoque!");return;}
+
+  // Sem despesas por peça — lucroReal provisório sem despesas gerais (recalculado no resumo)
+  carrinho.push({
+    nome:p.nome,preco:p.preco,custo:p.custo,
+    despesas:[],lucroReal:p.preco-p.custo
+  });
+
+  document.getElementById("formAdicionarProduto").classList.add("hidden");
+  renderCarrinho();
+}
+// Despesas gerais (contador independente)
+var despesasGeraisCount=0;
+function addDespesaGeral(){
+  var c=++despesasGeraisCount;
+  var div=document.createElement("div");div.className="despesa-row";div.id="dg-"+c;
+  div.innerHTML='<input type="text" placeholder="Ex: Chocolate" id="dgd-'+c+'" style="flex:2;color:#f0f0f0;" onchange="recalcularResumo()">'+
+    '<input type="number" placeholder="R$" id="dgv-'+c+'" style="flex:1;color:#f0f0f0;" oninput="recalcularResumo()">'+
+    '<button class="btn-rm" onclick="removerDespesaGeral('+c+')">✕</button>';
+  document.getElementById("listaDespesasGerais").appendChild(div);
+}
+function removerDespesaGeral(c){var el=document.getElementById("dg-"+c);if(el){el.remove();recalcularResumo();}}
+function coletarDespesasGerais(){
   var arr=[];
-  rows.forEach(function(row){
-    var id=row.id.replace("desp-","");
-    var descEl=document.getElementById("dd-"+id);
-    var valEl=document.getElementById("dv-"+id);
-    var val=parseFloat((valEl?valEl.value:0)||0);
-    var desc=(descEl?descEl.value.trim():"")||"Despesa";
+  document.getElementById("listaDespesasGerais").querySelectorAll(".despesa-row").forEach(function(row){
+    var id=row.id.replace("dg-","");
+    var dEl=document.getElementById("dgd-"+id);
+    var vEl=document.getElementById("dgv-"+id);
+    var val=parseFloat((vEl?vEl.value:0)||0);
+    var desc=(dEl?dEl.value.trim():"")||"Despesa";
     if(val>0)arr.push({desc:desc,valor:val});
   });
   return arr;
 }
-function totalDespesas(){
-  return coletarDespesas().reduce(function(t,d){return t+d.valor;},0);
+function recalcularResumo(){
+  if(carrinho.length===0)return;
+  var despGerais=coletarDespesasGerais();
+  var totalDesp=despGerais.reduce(function(t,d){return t+d.valor;},0);
+  var qtd=carrinho.length;
+  var despPorPeca=qtd>0?totalDesp/qtd:0;
+  // Atualizar lucroReal de cada item com a fatia das despesas gerais
+  carrinho.forEach(function(it){it.lucroRealComDesp=it.preco-it.custo-despPorPeca;});
+  var totalCompra=carrinho.reduce(function(t,it){return t+it.preco;},0);
+  var totalLucro=carrinho.reduce(function(t,it){return t+it.lucroRealComDesp;},0);
+  var totalDizimo=parseFloat((totalLucro>0?totalLucro*0.1:0).toFixed(2));
+  if(document.getElementById("ctTotal"))document.getElementById("ctTotal").innerText=fmt(totalCompra);
+  if(document.getElementById("ctDesp"))document.getElementById("ctDesp").innerText=totalDesp>0?fmt(totalDesp):"R$ 0,00";
+  if(document.getElementById("ctLucro"))document.getElementById("ctLucro").innerText=fmt(totalLucro);
+  if(document.getElementById("ctDizimo"))document.getElementById("ctDizimo").innerText=fmt(totalDizimo);
+  if(document.getElementById("ctQtd"))document.getElementById("ctQtd").innerText=qtd+" peça(s)";
+}
+function removerDoCarrinho(i){
+  carrinho.splice(i,1);
+  renderCarrinho();
+}
+function renderCarrinho(){
+  var lista=document.getElementById("listaCarrinho");
+  var resumo=document.getElementById("resumoCarrinho");
+  var blocoFP=document.getElementById("blocoFormaPagamento");
+
+  if(carrinho.length===0){
+    lista.innerHTML='<div class="carrinho-vazio">Nenhum produto adicionado ainda</div>';
+    resumo.classList.add("hidden");
+    blocoFP.classList.add("hidden");
+    return;
+  }
+
+  lista.innerHTML=carrinho.map(function(item,i){
+    return'<div class="carrinho-item">'+
+      '<button class="ci-rm" onclick="removerDoCarrinho('+i+')">✕</button>'+
+      '<div class="ci-nome">'+item.nome+'</div>'+
+      '<div class="ci-info">Preço: <b>'+fmt(item.preco)+'</b> | Custo: '+fmt(item.custo)+'</div>'+
+    '</div>';
+  }).join("");
+
+  resumo.classList.remove("hidden");
+  blocoFP.classList.remove("hidden");
+  recalcularResumo();
 }
 
 // ============================================================
-// VENDAS — INFO + PARCELAS
+// PARCELAS
 // ============================================================
-function atualizarInfoVenda(){
-  var nome=document.getElementById("produtoVenda").value;
-  var p=db.produtos.find(function(x){return x.nome===nome;});
-  var box=document.getElementById("infoLucroVenda");
-  if(!p){box.classList.add("hidden");return;}
-
-  var desp=totalDespesas();
-  var lucroBase=p.preco-p.custo;
-  var lucroReal=lucroBase-desp;
-  var tipo=document.getElementById("tipoVenda").value;
-  var numParc=1;
-  if(tipo==="parcelado"){numParc=+document.getElementById("numParcelas").value||1;}
-  var dizimoParcela=lucroReal>0?parseFloat((lucroReal/numParc*0.1).toFixed(2)):0;
-  var dizimoTotal=lucroReal>0?parseFloat((lucroReal*0.1).toFixed(2)):0;
-
-  var despHtml=desp>0?'<div class="linha"><span>Despesas adicionais</span><span style="color:#f87171;">- '+fmt(desp)+'</span></div>':'';
-  var parcHtml=numParc>1?'<div class="linha"><span>Parcelas</span><span>'+numParc+'x de '+fmt(p.preco/numParc)+'</span></div>':'';
-  var dizHtml=lucroReal>0?
-    '<div class="linha dizimo"><span>Dízimo total (10%)</span><span>'+fmt(dizimoTotal)+'</span></div>'+
-    (numParc>1?'<div class="linha dizimo"><span>Dízimo por parcela</span><span>'+fmt(dizimoParcela)+'</span></div>':''): '';
-
-  box.innerHTML=
-    '<div class="linha"><span>Preço de venda</span><span style="color:#e879a0;">'+fmt(p.preco)+'</span></div>'+
-    '<div class="linha"><span>Custo do produto</span><span style="color:#f87171;">- '+fmt(p.custo)+'</span></div>'+
-    despHtml+
-    '<div style="border-top:1px solid rgba(255,255,255,0.07);margin:6px 0;"></div>'+
-    '<div class="linha destaque"><span>Lucro real</span><span>'+fmt(lucroReal)+'</span></div>'+
-    parcHtml+
-    dizHtml;
-  box.classList.remove("hidden");
-}
-
 function toggleParcelas(){
   var t=document.getElementById("tipoVenda").value;
   document.getElementById("blocoParcelasAuto").classList.toggle("hidden",t!=="parcelado");
@@ -832,9 +898,9 @@ function toggleParcelas(){
 function addParcelaManual(){
   var c=++parcelasManualCount;
   var div=document.createElement("div");div.className="parcela-row";div.id="parc-"+c;
-  div.innerHTML='<span class="p-label">Parcela '+c+'</span>'+
+  div.innerHTML='<span class="p-label">AV '+c+'</span>'+
     '<input type="number" placeholder="R$ valor" id="pv-'+c+'" style="flex:1;">'+
-    '<input type="text" placeholder="Descrição" id="pd-'+c+'" style="flex:2;">'+
+    '<input type="text" placeholder="Ex: Entrada jan" id="pd-'+c+'" style="flex:2;">'+
     '<button class="btn-rm" onclick="removerParc('+c+')">✕</button>';
   document.getElementById("listaParcManual").appendChild(div);
 }
@@ -842,89 +908,140 @@ function removerParc(c){var el=document.getElementById("parc-"+c);if(el)el.remov
 function coletarParcelasManual(containerId){
   var rows=document.getElementById(containerId).querySelectorAll(".parcela-row");
   var arr=[];
-  rows.forEach(function(row,i){
+  rows.forEach(function(row,idx){
     var id=row.id.replace(/^[ep]*arc-/,"");
     var valEl=document.getElementById("pv-"+id)||document.getElementById("epv-"+id);
     var descEl=document.getElementById("pd-"+id)||document.getElementById("epd-"+id);
     var val=parseFloat((valEl?valEl.value:0)||0);
-    var desc=(descEl?descEl.value:"")||"Parcela "+(i+1);
-    if(val>0)arr.push({num:i+1,desc:desc,valor:val,pago:false});
+    var desc=(descEl?descEl.value:"")||"AV "+(idx+1);
+    if(val>0)arr.push({num:idx+1,desc:desc,valor:val,pago:false});
   });
   return arr;
 }
 
+// ============================================================
+// REGISTRAR VENDA (MULTI-PRODUTO)
+// ============================================================
 function registrarVenda(){
-  var pNome=document.getElementById("produtoVenda").value;
-  var p=db.produtos.find(function(x){return x.nome===pNome;});
-  if(!p){alert("Produto não encontrado");return;}
-  if(p.estoque<=0){alert("Produto sem estoque!");return;}
+  if(carrinho.length===0){alert("Adicione ao menos um produto ao carrinho.");return;}
+  var cliNome=document.getElementById("clienteVenda").value;
+  if(!cliNome){alert("Selecione uma cliente.");return;}
+
   var tipo=document.getElementById("tipoVenda").value;
-  var despesas=coletarDespesas();
-  var totalDesp=despesas.reduce(function(t,d){return t+d.valor;},0);
-  var lucroReal=p.preco-p.custo-totalDesp;
+
+  // Despesas gerais divididas entre as peças
+  var despGerais=coletarDespesasGerais();
+  var totalDespGerais=despGerais.reduce(function(t,d){return t+d.valor;},0);
+  var qtdPecas=carrinho.length;
+  var despPorPeca=qtdPecas>0?totalDespGerais/qtdPecas:0;
+
+  var totalCompra=carrinho.reduce(function(t,it){return t+it.preco;},0);
+  var totalCusto=carrinho.reduce(function(t,it){return t+it.custo;},0);
+  var totalLucroReal=carrinho.reduce(function(t,it){return t+(it.preco-it.custo-despPorPeca);},0);
 
   var parcelasArr=[];
   if(tipo==="avista"){
-    parcelasArr=[{num:1,desc:"À vista",valor:p.preco,pago:true,dataPag:hoje()}];
+    parcelasArr=[{num:1,desc:"À vista",valor:totalCompra,pago:true,dataPag:hoje()}];
   } else if(tipo==="fiado"){
-    parcelasArr=[{num:1,desc:"Fiado",valor:p.preco,pago:false}];
+    parcelasArr=[{num:1,desc:"Fiado",valor:totalCompra,pago:false}];
   } else if(tipo==="parcelado"){
     var qtd=+document.getElementById("numParcelas").value||1;
-    var vp=p.preco/qtd;
+    var vp=totalCompra/qtd;
     for(var i=1;i<=qtd;i++)parcelasArr.push({num:i,desc:"Parcela "+i+"/"+qtd,valor:parseFloat(vp.toFixed(2)),pago:false});
   } else if(tipo==="manual"){
     parcelasArr=coletarParcelasManual("listaParcManual");
-    if(parcelasArr.length===0){alert("Adicione ao menos uma parcela com valor.");return;}
+    if(parcelasArr.length===0){alert("Adicione ao menos um valor de AV.");return;}
+    var totalParc=parcelasArr.reduce(function(t,p){return t+p.valor;},0);
+    if(Math.abs(totalParc-totalCompra)>0.10){
+      if(!confirm("Atenção: a soma dos AVs ("+fmt(totalParc)+") é diferente do total da compra ("+fmt(totalCompra)+").\nDeseja continuar mesmo assim?"))return;
+    }
   }
-  var cliNome=document.getElementById("clienteVenda").value;
-  var totalVenda=parcelasArr.reduce(function(t,x){return t+x.valor;},0);
+
   var saldoDevedor=parcelasArr.filter(function(x){return!x.pago;}).reduce(function(t,x){return t+x.valor;},0);
 
+  // Montar itens para salvar com lucroReal por peça já calculado
+  var itensDb=carrinho.map(function(it){
+    return{nome:it.nome,preco:it.preco,custo:it.custo,despesas:[],lucroReal:parseFloat((it.preco-it.custo-despPorPeca).toFixed(2))};
+  });
+
+  // Salvar venda
   db.vendas.push({
-    cliente:cliNome,produto:p.nome,valor:totalVenda,
-    lucro:totalVenda-p.custo, // lucro sem descontar despesas (compatibilidade)
-    lucroReal:lucroReal,       // lucro real com despesas descontadas
-    despesas:despesas,
+    cliente:cliNome,
+    produto:carrinho.length===1?carrinho[0].nome:carrinho.length+" peças",
+    valor:totalCompra,
+    lucro:totalCompra-totalCusto,
+    lucroReal:parseFloat(totalLucroReal.toFixed(2)),
+    despesasGerais:despGerais,          // array das despesas gerais
+    totalDespesasGerais:totalDespGerais, // total para exibição
+    itens:itensDb,
     tipo:tipo,parcelas:parcelasArr,data:hoje()
   });
-  p.estoque--;
-  db.estoqueHist.push({produto:p.nome,tipo:"saida",qtd:1,obs:"Venda para "+cliNome,data:hoje()});
+
+  // Baixar estoque
+  carrinho.forEach(function(it){
+    var p=db.produtos.find(function(x){return x.nome===it.nome;});
+    if(p){p.estoque--;db.estoqueHist.push({produto:it.nome,tipo:"saida",qtd:1,obs:"Venda para "+cliNome,data:hoje()});}
+  });
+
+  // Saldo do cliente
   var c=db.clientes.find(function(x){return x.nome===cliNome;});
   if(c)c.saldo+=saldoDevedor;
 
+  // Financeiro para venda à vista — descrição detalhada
   if(tipo==="avista"){
-    db.financeiro.push({desc:"Venda à vista: "+p.nome+" ("+cliNome+")",valor:totalVenda,tipo:"entrada",data:hoje()});
-    // Dízimo à vista — perguntar imediatamente
-    if(lucroReal>0){
-      var valorDizimo=parseFloat((lucroReal*0.1).toFixed(2));
-      var msg="Venda registrada com sucesso!\n\n"+
-        "Deseja registrar o dízimo desta venda?\n"+
-        "━━━━━━━━━━━━━━━━━━\n"+
-        "Produto: "+p.nome+"\n"+
-        "Lucro real: "+fmt(lucroReal)+"\n"+
-        "Dízimo (10%): "+fmt(valorDizimo)+"\n"+
-        "━━━━━━━━━━━━━━━━━━\n"+
-        "Sim = registrar no histórico de dízimo";
+    var descItens=carrinho.length===1?carrinho[0].nome:carrinho.map(function(it){return it.nome;}).join(", ");
+    var descFinanceiro="Venda à vista: "+descItens+" ("+cliNome+")";
+    if(despGerais.length>0){
+      descFinanceiro+=" | Despesas: "+despGerais.map(function(d){return d.desc+" "+fmt(d.valor);}).join(", ");
+    }
+    db.financeiro.push({
+      desc:descFinanceiro,
+      valor:totalCompra,tipo:"entrada",data:hoje(),
+      // dados extras para exibição detalhada
+      _detalhe:{cliente:cliNome,itens:itensDb,despesasGerais:despGerais,totalDesp:totalDespGerais,lucroReal:parseFloat(totalLucroReal.toFixed(2)),tipo:"venda_avista"}
+    });
+
+    // Dízimo à vista — detalhado por peça
+    if(totalLucroReal>0){
+      var valorDizimo=parseFloat((totalLucroReal*0.1).toFixed(2));
+      var detalhe="";
+      if(itensDb.length>1){
+        detalhe="\n\nPor peça:";
+        itensDb.forEach(function(it){detalhe+="\n  • "+it.nome+": lucro "+fmt(it.lucroReal)+" → dízimo "+fmt(it.lucroReal*0.1);});
+      }
+      if(despGerais.length>0){
+        detalhe+="\n\nDespesas gerais ("+fmt(totalDespGerais)+" ÷ "+qtdPecas+" peças = "+fmt(despPorPeca)+"/peça):";
+        despGerais.forEach(function(d){detalhe+="\n  • "+d.desc+": "+fmt(d.valor);});
+      }
+      var msg="Venda registrada!\n\nDeseja registrar o dízimo?\n━━━━━━━━━━━━━━━━━━\nCliente: "+cliNome+"\nLucro real total: "+fmt(totalLucroReal)+"\nDízimo (10%): "+fmt(valorDizimo)+detalhe+"\n━━━━━━━━━━━━━━━━━━\nSim = registrar no dízimo";
       if(confirm(msg)){
-        var novaV=db.vendas[db.vendas.length-1];
-        novaV.parcelas[0].pago=true;
-        db.dizimo.push({desc:"Dízimo: "+p.nome+" — À vista ("+cliNome+")",valor:valorDizimo,lucroRef:lucroReal,data:hoje()});
+        db.dizimo.push({
+          desc:"Dízimo: "+descItens+" — À vista ("+cliNome+")",
+          valor:valorDizimo,lucroRef:parseFloat(totalLucroReal.toFixed(2)),
+          _detalhe:{cliente:cliNome,itens:itensDb,despesasGerais:despGerais,totalDesp:totalDespGerais,lucroReal:parseFloat(totalLucroReal.toFixed(2)),proporcao:1,descParcela:"À vista"},
+          data:hoje()
+        });
       }
     }
   }
 
-  // Limpar formulário
-  document.getElementById("listaDespesas").innerHTML="";
-  despesasCount=0;
+  // Limpar tudo
+  carrinho=[];
+  document.getElementById("listaCarrinho").innerHTML='';
+  document.getElementById("resumoCarrinho").classList.add("hidden");
+  document.getElementById("blocoFormaPagamento").classList.add("hidden");
   document.getElementById("listaParcManual").innerHTML="";
+  document.getElementById("listaDespesasGerais").innerHTML="";
   parcelasManualCount=0;
-  document.getElementById("infoLucroVenda").classList.add("hidden");
+  despesasGeraisCount=0;
 
   save();
-  if(tipo!=="avista")alert("Venda registrada!");
+  if(tipo!=="avista")alert("Venda registrada com sucesso!");
 }
 
-// EDIT VENDA
+// ============================================================
+// EDITAR VENDA
+// ============================================================
 function toggleEditParcelas(){
   var t=document.getElementById("editVendaTipo").value;
   document.getElementById("editBlocoAuto").classList.toggle("hidden",t!=="parcelado");
@@ -933,18 +1050,16 @@ function toggleEditParcelas(){
 function addEditParcelaManual(){
   var c=++editParcelasManualCount;
   var div=document.createElement("div");div.className="parcela-row";div.id="eparc-"+c;
-  div.innerHTML='<span class="p-label">Parcela '+c+'</span>'+
+  div.innerHTML='<span class="p-label">AV '+c+'</span>'+
     '<input type="number" placeholder="R$ valor" id="epv-'+c+'" style="flex:1;">'+
     '<input type="text" placeholder="Descrição" id="epd-'+c+'" style="flex:2;">'+
     '<button class="btn-rm" onclick="removerEParc('+c+')">✕</button>';
   document.getElementById("editListaParcManual").appendChild(div);
 }
 function removerEParc(c){var el=document.getElementById("eparc-"+c);if(el)el.remove();}
-
 function abrirEdicaoVenda(i){
   editVendaIdx=i;var v=db.vendas[i];
   document.getElementById("editVendaCliente").innerHTML=db.clientes.map(function(c){return'<option'+(c.nome===v.cliente?' selected':'')+'>'+c.nome+'</option>';}).join("");
-  document.getElementById("editVendaProduto").innerHTML=db.produtos.map(function(p){return'<option'+(p.nome===v.produto?' selected':'')+'>'+p.nome+'</option>';}).join("");
   document.getElementById("editVendaTipo").value=v.tipo||"avista";
   document.getElementById("editNumParcelas").value=v.parcelas.length;
   document.getElementById("editVendaData").value=v.data;
@@ -954,7 +1069,7 @@ function abrirEdicaoVenda(i){
     v.parcelas.forEach(function(p){
       var c=++editParcelasManualCount;
       var div=document.createElement("div");div.className="parcela-row";div.id="eparc-"+c;
-      div.innerHTML='<span class="p-label">Parcela '+c+'</span>'+
+      div.innerHTML='<span class="p-label">AV '+c+'</span>'+
         '<input type="number" placeholder="R$ valor" id="epv-'+c+'" value="'+(p.valor||0)+'" style="flex:1;">'+
         '<input type="text" placeholder="Descrição" id="epd-'+c+'" value="'+(p.desc||"")+'" style="flex:2;">'+
         '<button class="btn-rm" onclick="removerEParc('+c+')">✕</button>';
@@ -966,32 +1081,27 @@ function abrirEdicaoVenda(i){
 }
 function salvarEdicaoVenda(){
   var v=db.vendas[editVendaIdx];
-  var novoProd=document.getElementById("editVendaProduto").value;
-  var p=db.produtos.find(function(x){return x.nome===novoProd;});
   var novoCliente=document.getElementById("editVendaCliente").value;
   var novoTipo=document.getElementById("editVendaTipo").value;
+  // Reverter saldo antigo
   var cAntigo=db.clientes.find(function(x){return x.nome===v.cliente;});
   if(cAntigo){
     var pendAnt=v.parcelas.filter(function(pp){return!pp.pago;}).reduce(function(t,pp){return t+(pp.valor||v.valor/v.parcelas.length);},0);
     cAntigo.saldo-=pendAnt;if(cAntigo.saldo<0)cAntigo.saldo=0;
   }
-  v.cliente=novoCliente;v.produto=novoProd;v.tipo=novoTipo;v.data=document.getElementById("editVendaData").value;
+  v.cliente=novoCliente;v.tipo=novoTipo;v.data=document.getElementById("editVendaData").value;
+  var totalV=v.valor;
   if(novoTipo==="parcelado"){
-    var qtd=+document.getElementById("editNumParcelas").value||1;
-    var preco=p?p.preco:v.valor;var vp=preco/qtd;
-    v.valor=preco;v.lucro=p?preco-p.custo:v.lucro;
-    v.parcelas=[];
-    for(var i=1;i<=qtd;i++)v.parcelas.push({num:i,desc:"Parcela "+i+"/"+qtd,valor:parseFloat(vp.toFixed(2)),pago:false});
+    var qtd=+document.getElementById("editNumParcelas").value||1;var vp=totalV/qtd;
+    v.parcelas=[];for(var i=1;i<=qtd;i++)v.parcelas.push({num:i,desc:"Parcela "+i+"/"+qtd,valor:parseFloat(vp.toFixed(2)),pago:false});
   } else if(novoTipo==="manual"){
-    var novasParcelas=coletarParcelasManual("editListaParcManual");
-    if(novasParcelas.length===0){alert("Adicione ao menos uma parcela.");return;}
-    v.parcelas=novasParcelas;v.valor=novasParcelas.reduce(function(t,x){return t+x.valor;},0);v.lucro=p?v.valor-p.custo:v.lucro;
+    var nP=coletarParcelasManual("editListaParcManual");
+    if(nP.length===0){alert("Adicione ao menos um AV.");return;}
+    v.parcelas=nP;
   } else if(novoTipo==="avista"){
-    var preco=p?p.preco:v.valor;
-    v.parcelas=[{num:1,desc:"À vista",valor:preco,pago:true,dataPag:v.data}];v.valor=preco;v.lucro=p?preco-p.custo:v.lucro;
+    v.parcelas=[{num:1,desc:"À vista",valor:totalV,pago:true,dataPag:v.data}];
   } else {
-    var preco=p?p.preco:v.valor;
-    v.parcelas=[{num:1,desc:"Fiado",valor:preco,pago:false}];v.valor=preco;v.lucro=p?preco-p.custo:v.lucro;
+    v.parcelas=[{num:1,desc:"Fiado",valor:totalV,pago:false}];
   }
   var cNovo=db.clientes.find(function(x){return x.nome===novoCliente;});
   if(cNovo){var pendNov=v.parcelas.filter(function(pp){return!pp.pago;}).reduce(function(t,pp){return t+pp.valor;},0);cNovo.saldo+=pendNov;}
@@ -1000,31 +1110,44 @@ function salvarEdicaoVenda(){
 }
 function excluirVenda(i,recarregarCliente){
   var v=db.vendas[i];
-  if(!confirm("Excluir esta venda?\n"+v.produto+" — "+v.cliente))return;
+  if(!confirm("Excluir esta venda?"))return;
   var c=db.clientes.find(function(x){return x.nome===v.cliente;});
   if(c){var pend=v.parcelas.filter(function(pp){return!pp.pago;}).reduce(function(t,pp){return t+(pp.valor||v.valor/v.parcelas.length);},0);c.saldo-=pend;if(c.saldo<0)c.saldo=0;}
-  var p=db.produtos.find(function(x){return x.nome===v.produto;});
-  if(p){p.estoque++;db.estoqueHist.push({produto:p.nome,tipo:"entrada",qtd:1,obs:"Venda cancelada",data:hoje()});}
-  db.vendas.splice(i,1);save();
-  if(recarregarCliente&&clienteDetalheIdx!=null){
-    if(clienteDetalheIdx<db.clientes.length)abrirCliente(clienteDetalheIdx);
-    else ir("clientes");
+  // Devolver estoque de cada peça
+  if(v.itens&&v.itens.length>0){
+    v.itens.forEach(function(it){var p=db.produtos.find(function(x){return x.nome===it.nome;});if(p){p.estoque++;db.estoqueHist.push({produto:it.nome,tipo:"entrada",qtd:1,obs:"Venda cancelada",data:hoje()});}});
+  } else if(v.produto){
+    var p=db.produtos.find(function(x){return x.nome===v.produto;});if(p){p.estoque++;db.estoqueHist.push({produto:p.nome,tipo:"entrada",qtd:1,obs:"Venda cancelada",data:hoje()});}
   }
+  db.vendas.splice(i,1);save();
+  if(recarregarCliente&&clienteDetalheIdx!=null){if(clienteDetalheIdx<db.clientes.length)abrirCliente(clienteDetalheIdx);else ir("clientes");}
 }
 function renderVendas(){
   var busca=(document.getElementById("buscaVenda")?document.getElementById("buscaVenda").value:"").toLowerCase();
-  var lista=db.vendas.filter(function(v){return v.cliente.toLowerCase().includes(busca)||v.produto.toLowerCase().includes(busca);});
+  var lista=db.vendas.filter(function(v){
+    var textoBase=v.cliente.toLowerCase()+(v.produto?v.produto.toLowerCase():"");
+    var textoItens=v.itens?v.itens.map(function(it){return it.nome.toLowerCase();}).join(" "):"";
+    return(textoBase+textoItens).includes(busca);
+  });
   if(lista.length===0){document.getElementById("listaVendas").innerHTML='<div class="card small">Nenhuma venda registrada</div>';return;}
   document.getElementById("listaVendas").innerHTML=lista.map(function(v){
     var i=db.vendas.indexOf(v);
     var pagas=v.parcelas.filter(function(p){return p.pago;}).length;
     var total=v.parcelas.length;
     var badge=v.tipo==="avista"?'<span class="badge badge-verde">À vista</span>':pagas>=total?'<span class="badge badge-verde">Quitado</span>':'<span class="badge badge-vermelho">Pendente '+pagas+'/'+total+'</span>';
-    var lucroTag=v.lucroReal!=null?'<span class="small" style="color:#4ade80;"> | Lucro: '+fmt(v.lucroReal)+'</span>':'';
+    // Listar itens
+    var itensHtml="";
+    if(v.itens&&v.itens.length>0){
+      itensHtml='<div style="margin:4px 0;">'+v.itens.map(function(it){
+        return'<div class="small">• '+it.nome+' ('+fmt(it.preco)+')</div>';}).join("")+'</div>';
+    }
     return'<div class="card">'+
-      '<b>'+v.produto+'</b>'+badge+'<br>'+
-      '<span class="small">'+v.cliente+' &nbsp;•&nbsp; '+v.data+'</span><br>'+
-      '<span style="color:#e879a0;font-size:13px;">'+fmt(v.valor)+'</span>'+lucroTag+
+      '<div style="display:flex;justify-content:space-between;align-items:center;">'+
+        '<div><span style="color:#e879a0;font-size:15px;font-weight:700;">'+fmt(v.valor)+'</span>'+badge+'</div>'+
+        '<span class="small">'+v.data+'</span>'+
+      '</div>'+
+      '<div class="small" style="margin:2px 0;">'+v.cliente+'</div>'+
+      itensHtml+
       '<div class="acoes"><button class="btn-warning" onclick="abrirEdicaoVenda('+i+')">Editar</button><button class="btn-danger" onclick="excluirVenda('+i+',false)">Excluir</button></div>'+
     '</div>';
   }).join("");
@@ -1037,8 +1160,7 @@ function sincMesFin(){document.getElementById("finDe").value="";document.getElem
 function limparMesFin(){document.getElementById("mesFin").value="";renderFin();}
 function limparFiltrosFin(){document.getElementById("mesFin").value="";document.getElementById("finDe").value="";document.getElementById("finAte").value="";document.getElementById("finTipoFiltro").value="todos";renderFin();}
 function addFin(){
-  var desc=document.getElementById("descFin").value.trim();
-  var valor=document.getElementById("valorFin").value;
+  var desc=document.getElementById("descFin").value.trim();var valor=document.getElementById("valorFin").value;
   if(!desc||!valor){alert("Preencha todos os campos");return;}
   db.financeiro.push({desc:desc,valor:+valor,tipo:document.getElementById("tipoFin").value,data:hoje()});
   document.getElementById("descFin").value="";document.getElementById("valorFin").value="";save();
@@ -1056,33 +1178,61 @@ function salvarEdicaoFin(){
   fecharModal("modalFin");save();
 }
 function excluirFin(i){if(!confirm("Excluir este lançamento?"))return;db.financeiro.splice(i,1);save();}
+// Helper: monta HTML detalhado de um registro _detalhe
+function htmlDetalhe(det){
+  if(!det)return"";
+  var html='<div style="background:#0a1628;border-radius:8px;padding:8px 10px;margin-top:6px;font-size:12px;border:1px solid rgba(255,255,255,0.05);">';
+  // Itens/peças
+  if(det.itens&&det.itens.length>0){
+    html+='<div style="color:#6b7280;margin-bottom:3px;">Peças:</div>';
+    det.itens.forEach(function(it){
+      html+='<div style="display:flex;justify-content:space-between;padding:2px 0;">'+
+        '<span>• '+it.nome+'</span>'+
+        '<span style="color:#e879a0;">'+fmt(it.preco)+'<span style="color:#4ade80;margin-left:6px;">(lucro: '+fmt(it.lucroReal)+')</span></span>'+
+      '</div>';
+    });
+  }
+  // Despesas gerais
+  if(det.despesasGerais&&det.despesasGerais.length>0){
+    html+='<div style="color:#6b7280;margin-top:4px;margin-bottom:2px;">Despesas gerais:</div>';
+    det.despesasGerais.forEach(function(d){
+      html+='<div style="display:flex;justify-content:space-between;padding:2px 0;"><span>• '+d.desc+'</span><span style="color:#f87171;">'+fmt(d.valor)+'</span></div>';
+    });
+    html+='<div style="display:flex;justify-content:space-between;padding:2px 0;color:#6b7280;"><span>Total despesas</span><span style="color:#f87171;">'+fmt(det.totalDesp)+'</span></div>';
+  }
+  // Linha divisória
+  html+='<div style="border-top:1px solid rgba(255,255,255,0.07);margin:5px 0;"></div>';
+  // Lucro e pagamento
+  if(det.lucroReal!=null)html+='<div style="display:flex;justify-content:space-between;padding:2px 0;"><span style="color:#6b7280;">Lucro real</span><span style="color:#4ade80;font-weight:700;">'+fmt(det.lucroReal)+'</span></div>';
+  if(det.proporcao!=null&&det.proporcao<1)html+='<div style="display:flex;justify-content:space-between;padding:2px 0;"><span style="color:#6b7280;">Proporção paga</span><span style="color:#93c5fd;">'+(det.proporcao*100).toFixed(1)+'%</span></div>';
+  if(det.valorParcela!=null)html+='<div style="display:flex;justify-content:space-between;padding:2px 0;"><span style="color:#6b7280;">Valor do pagamento</span><span style="color:#e879a0;font-weight:700;">'+fmt(det.valorParcela)+'</span></div>';
+  if(det.totalVenda!=null&&det.valorParcela!=null&&det.totalVenda!==det.valorParcela)html+='<div style="display:flex;justify-content:space-between;padding:2px 0;"><span style="color:#6b7280;">Total da venda</span><span>'+fmt(det.totalVenda)+'</span></div>';
+  html+='</div>';
+  return html;
+}
+
 function renderFin(){
   var m=document.getElementById("mesFin")?document.getElementById("mesFin").value:"";
   var deStr=document.getElementById("finDe")?document.getElementById("finDe").value:"";
   var ateStr=document.getElementById("finAte")?document.getElementById("finAte").value:"";
   var tipoFiltro=document.getElementById("finTipoFiltro")?document.getElementById("finTipoFiltro").value:"todos";
-  var de=deStr?new Date(deStr+"T00:00:00"):null;
-  var ate=ateStr?new Date(ateStr+"T23:59:59"):null;
+  var de=deStr?new Date(deStr+"T00:00:00"):null;var ate=ateStr?new Date(ateStr+"T23:59:59"):null;
   var lista=db.financeiro.filter(function(f){
     if(m&&!deStr&&!ateStr){if(mesAno(f.data)!==m)return false;}
     else if(deStr||ateStr){if(!dentroIntervalo(f.data,de,ate))return false;}
-    if(tipoFiltro!=="todos"&&f.tipo!==tipoFiltro)return false;
-    return true;
+    if(tipoFiltro!=="todos"&&f.tipo!==tipoFiltro)return false;return true;
   });
-  var totalEnt=lista.filter(function(f){return f.tipo==="entrada";}).reduce(function(t,f){return t+f.valor;},0);
-  var totalSai=lista.filter(function(f){return f.tipo==="saida";}).reduce(function(t,f){return t+f.valor;},0);
+  var tE=lista.filter(function(f){return f.tipo==="entrada";}).reduce(function(t,f){return t+f.valor;},0);
+  var tS=lista.filter(function(f){return f.tipo==="saida";}).reduce(function(t,f){return t+f.valor;},0);
   var html="";
-  if(lista.length>0){
-    html='<div class="card" style="display:flex;justify-content:space-between;font-size:13px;margin-bottom:8px;">'+
-      '<span>Entradas: <b style="color:#4ade80">'+fmt(totalEnt)+'</b></span>'+
-      '<span>Saídas: <b style="color:#f87171">'+fmt(totalSai)+'</b></span>'+
-      '<span>Saldo: <b style="color:'+(totalEnt-totalSai>=0?"#4ade80":"#f87171")+'">'+fmt(totalEnt-totalSai)+'</b></span></div>';
-  }
+  if(lista.length>0)html='<div class="card" style="display:flex;justify-content:space-between;font-size:13px;margin-bottom:8px;"><span>Entradas: <b style="color:#4ade80">'+fmt(tE)+'</b></span><span>Saídas: <b style="color:#f87171">'+fmt(tS)+'</b></span><span>Saldo: <b style="color:'+(tE-tS>=0?"#4ade80":"#f87171")+'">'+fmt(tE-tS)+'</b></span></div>';
   if(lista.length===0)html+='<div class="card small" style="color:#6b7280;">Nenhum lançamento no período</div>';
   html+=lista.map(function(f){
     var i=db.financeiro.indexOf(f);
+    var detHtml=htmlDetalhe(f._detalhe);
     return'<div class="card"><b>'+f.desc+'</b> <span class="badge '+(f.tipo==="entrada"?"badge-verde":"badge-vermelho")+'">'+(f.tipo==="entrada"?"Entrada":"Saída")+'</span><br>'+
       '<span style="color:'+(f.tipo==="entrada"?"#4ade80":"#f87171")+';">'+fmt(f.valor)+'</span> <span class="small">'+f.data+'</span>'+
+      detHtml+
       '<div class="acoes"><button class="btn-warning" onclick="abrirEdicaoFin('+i+')">Editar</button><button class="btn-danger" onclick="excluirFin('+i+')">Excluir</button></div></div>';
   }).join("");
   document.getElementById("listaFin").innerHTML=html;
@@ -1097,34 +1247,30 @@ function fechar(){
   var m=document.getElementById("mes").value;
   var deStr=document.getElementById("fechDe")?document.getElementById("fechDe").value:"";
   var ateStr=document.getElementById("fechAte")?document.getElementById("fechAte").value:"";
-  if(!m&&!deStr&&!ateStr){alert("Selecione um mês ou um período.");return;}
-  var de=deStr?new Date(deStr+"T00:00:00"):null;
-  var ate=ateStr?new Date(ateStr+"T23:59:59"):null;
-  function filtrarData(dataStr){if(m&&!deStr&&!ateStr)return mesAno(dataStr)===m;return dentroIntervalo(dataStr,de,ate);}
-  var label=m&&!deStr&&!ateStr?"Mês: "+nomeMes(m):"Período: "+(deStr||"início")+" até "+(ateStr||"hoje");
-  document.getElementById("periodoLabel").innerText=label;
-  document.getElementById("fechamentoConteudo").classList.remove("hidden");
-  var vendasMes=db.vendas.filter(function(v){return filtrarData(v.data);});
-  var finMes=db.financeiro.filter(function(f){return filtrarData(f.data);});
-  var tv=vendasMes.reduce(function(t,v){return t+v.valor;},0);
-  var lu=vendasMes.reduce(function(t,v){return t+v.lucro;},0);
-  var desp=finMes.filter(function(f){return f.tipo==="saida";}).reduce(function(t,f){return t+f.valor;},0);
-  var ent=finMes.filter(function(f){return f.tipo==="entrada";}).reduce(function(t,f){return t+f.valor;},0);
+  if(!m&&!deStr&&!ateStr){alert("Selecione um mês ou período.");return;}
+  var de=deStr?new Date(deStr+"T00:00:00"):null;var ate=ateStr?new Date(ateStr+"T23:59:59"):null;
+  function fd(s){if(m&&!deStr&&!ateStr)return mesAno(s)===m;return dentroIntervalo(s,de,ate);}
+  var lbl=m&&!deStr&&!ateStr?"Mês: "+nomeMes(m):"Período: "+(deStr||"início")+" até "+(ateStr||"hoje");
+  document.getElementById("periodoLabel").innerText=lbl;document.getElementById("fechamentoConteudo").classList.remove("hidden");
+  var vm=db.vendas.filter(function(v){return fd(v.data);});
+  var fm=db.financeiro.filter(function(f){return fd(f.data);});
+  var tv=vm.reduce(function(t,v){return t+v.valor;},0);var lu=vm.reduce(function(t,v){return t+v.lucro;},0);
+  var desp=fm.filter(function(f){return f.tipo==="saida";}).reduce(function(t,f){return t+f.valor;},0);
+  var ent=fm.filter(function(f){return f.tipo==="entrada";}).reduce(function(t,f){return t+f.valor;},0);
   document.getElementById("mv").innerText=fmt(tv);document.getElementById("ml").innerText=fmt(lu);
   document.getElementById("md").innerText=fmt(desp);document.getElementById("mc").innerText=fmt(tv+ent-desp);
   if(chartFech)chartFech.destroy();
-  chartFech=new Chart(document.getElementById("chartFechamento").getContext("2d"),{
-    type:"bar",
+  chartFech=new Chart(document.getElementById("chartFechamento").getContext("2d"),{type:"bar",
     data:{labels:["Vendas","Lucro","Entradas","Despesas","Caixa"],datasets:[{data:[tv,lu,ent,desp,tv+ent-desp],backgroundColor:["#e879a0","#4ade80","#60a5fa","#f87171","#fbbf24"],borderRadius:8}]},
-    options:{responsive:true,plugins:{legend:{display:false}},scales:{y:{ticks:{color:"#9ca3af",callback:function(v){return"R$"+v;}},grid:{color:"rgba(255,255,255,0.05)"}},x:{ticks:{color:"#9ca3af"},grid:{display:false}}}}
-  });
-  document.getElementById("detalheMesVendas").innerHTML=vendasMes.length===0?'<div class="card small" style="color:#6b7280;">Nenhuma venda no período</div>':
-    vendasMes.map(function(v){var pagas=v.parcelas.filter(function(p){return p.pago;}).length;
-      return'<div class="card"><b>'+v.produto+'</b> <span class="badge '+(pagas>=v.parcelas.length?"badge-verde":"badge-vermelho")+'">'+(pagas>=v.parcelas.length?"Quitado":"Pend. "+pagas+"/"+v.parcelas.length)+'</span><br>'+
-        '<span class="small">'+v.cliente+' — '+v.data+'</span><br><span style="color:#e879a0;">'+fmt(v.valor)+'</span></div>';}).join("");
-  document.getElementById("detalheMesFin").innerHTML=finMes.length===0?'<div class="card small" style="color:#6b7280;">Nenhum lançamento no período</div>':
-    finMes.map(function(f){return'<div class="card"><b>'+f.desc+'</b> <span class="badge '+(f.tipo==="entrada"?"badge-verde":"badge-vermelho")+'">'+(f.tipo==="entrada"?"Entrada":"Saída")+'</span><br>'+
-      '<span style="color:'+(f.tipo==="entrada"?"#4ade80":"#f87171")+';">'+fmt(f.valor)+'</span> <span class="small">'+f.data+'</span></div>';}).join("");
+    options:{responsive:true,plugins:{legend:{display:false}},scales:{y:{ticks:{color:"#9ca3af",callback:function(v){return"R$"+v;}},grid:{color:"rgba(255,255,255,0.05)"}},x:{ticks:{color:"#9ca3af"},grid:{display:false}}}}});
+  document.getElementById("detalheMesVendas").innerHTML=vm.length===0?'<div class="card small" style="color:#6b7280;">Nenhuma venda no período</div>':
+    vm.map(function(v){
+      var pagas=v.parcelas.filter(function(p){return p.pago;}).length;
+      var itensStr=v.itens&&v.itens.length>0?v.itens.map(function(it){return it.nome;}).join(", "):(v.produto||"");
+      return'<div class="card"><b>'+itensStr+'</b> <span class="badge '+(pagas>=v.parcelas.length?"badge-verde":"badge-vermelho")+'">'+(pagas>=v.parcelas.length?"Quitado":"Pend. "+pagas+"/"+v.parcelas.length)+'</span><br><span class="small">'+v.cliente+' — '+v.data+'</span><br><span style="color:#e879a0;">'+fmt(v.valor)+'</span></div>';
+    }).join("");
+  document.getElementById("detalheMesFin").innerHTML=fm.length===0?'<div class="card small" style="color:#6b7280;">Nenhum lançamento no período</div>':
+    fm.map(function(f){return'<div class="card"><b>'+f.desc+'</b> <span class="badge '+(f.tipo==="entrada"?"badge-verde":"badge-vermelho")+'">'+(f.tipo==="entrada"?"Entrada":"Saída")+'</span><br><span style="color:'+(f.tipo==="entrada"?"#4ade80":"#f87171")+';">'+fmt(f.valor)+'</span> <span class="small">'+f.data+'</span></div>';}).join("");
 }
 
 // ============================================================
@@ -1133,58 +1279,37 @@ function fechar(){
 function sincMesDizimo(){document.getElementById("dizimoDe").value="";document.getElementById("dizimoAte").value="";renderDizimo();}
 function limparMesDizimo(){document.getElementById("mesDizimo").value="";renderDizimo();}
 function limparFiltrosDizimo(){document.getElementById("mesDizimo").value="";document.getElementById("dizimoDe").value="";document.getElementById("dizimoAte").value="";renderDizimo();}
-
 function abrirEdicaoDizimo(i){
   editDizimoIdx=i;var d=db.dizimo[i];
-  document.getElementById("editDizimoDesc").value=d.desc;
-  document.getElementById("editDizimoValor").value=d.valor;
-  document.getElementById("editDizimoData").value=d.data;
-  abrirModal("modalDizimo");
+  document.getElementById("editDizimoDesc").value=d.desc;document.getElementById("editDizimoValor").value=d.valor;document.getElementById("editDizimoData").value=d.data;abrirModal("modalDizimo");
 }
 function salvarEdicaoDizimo(){
   var d=db.dizimo[editDizimoIdx];
-  d.desc=document.getElementById("editDizimoDesc").value.trim();
-  d.valor=+document.getElementById("editDizimoValor").value;
-  d.data=document.getElementById("editDizimoData").value;
+  d.desc=document.getElementById("editDizimoDesc").value.trim();d.valor=+document.getElementById("editDizimoValor").value;d.data=document.getElementById("editDizimoData").value;
   fecharModal("modalDizimo");save();
 }
-function excluirDizimo(i){
-  if(!confirm("Excluir este registro de dízimo?"))return;
-  db.dizimo.splice(i,1);save();
-}
-
+function excluirDizimo(i){if(!confirm("Excluir este registro de dízimo?"))return;db.dizimo.splice(i,1);save();}
 function renderDizimo(){
   var m=document.getElementById("mesDizimo")?document.getElementById("mesDizimo").value:"";
   var deStr=document.getElementById("dizimoDe")?document.getElementById("dizimoDe").value:"";
   var ateStr=document.getElementById("dizimoAte")?document.getElementById("dizimoAte").value:"";
-  var de=deStr?new Date(deStr+"T00:00:00"):null;
-  var ate=ateStr?new Date(ateStr+"T23:59:59"):null;
-
+  var de=deStr?new Date(deStr+"T00:00:00"):null;var ate=ateStr?new Date(ateStr+"T23:59:59"):null;
   var lista=db.dizimo.filter(function(d){
     if(m&&!deStr&&!ateStr)return mesAno(d.data)===m;
-    if(deStr||ateStr)return dentroIntervalo(d.data,de,ate);
-    return true;
+    if(deStr||ateStr)return dentroIntervalo(d.data,de,ate);return true;
   });
-
   var total=lista.reduce(function(t,d){return t+d.valor;},0);
-  document.getElementById("dizimoTotal").innerText=fmt(total);
-  document.getElementById("dizimoQtd").innerText=lista.length;
-
-  if(lista.length===0){
-    document.getElementById("listaDizimo").innerHTML='<div class="card small" style="color:#6b7280;">Nenhum registro de dízimo no período</div>';
-    return;
-  }
+  document.getElementById("dizimoTotal").innerText=fmt(total);document.getElementById("dizimoQtd").innerText=lista.length;
+  if(lista.length===0){document.getElementById("listaDizimo").innerHTML='<div class="card small" style="color:#6b7280;">Nenhum registro no período</div>';return;}
   document.getElementById("listaDizimo").innerHTML=lista.map(function(d){
     var i=db.dizimo.indexOf(d);
-    return'<div class="card">'+
-      '<b>'+d.desc+'</b><br>'+
+    var detHtml=htmlDetalhe(d._detalhe);
+    return'<div class="card"><b>'+d.desc+'</b><br>'+
       '<span style="color:#fde68a;font-size:15px;font-weight:700;">'+fmt(d.valor)+'</span>'+
       (d.lucroRef?' <span class="small">(10% de '+fmt(d.lucroRef)+')</span>':'')+
       '<br><span class="small">'+d.data+'</span>'+
-      '<div class="acoes">'+
-        '<button class="btn-warning" onclick="abrirEdicaoDizimo('+i+')">Editar</button>'+
-        '<button class="btn-danger" onclick="excluirDizimo('+i+')">Excluir</button>'+
-      '</div>'+
+      detHtml+
+      '<div class="acoes"><button class="btn-warning" onclick="abrirEdicaoDizimo('+i+')">Editar</button><button class="btn-danger" onclick="excluirDizimo('+i+')">Excluir</button></div>'+
     '</div>';
   }).join("");
 }
@@ -1193,7 +1318,7 @@ function renderDizimo(){
 // BACKUP
 // ============================================================
 function gerarBackup(){
-  var backup={versao:"3.0",data:new Date().toLocaleString("pt-BR"),db:db};
+  var backup={versao:"4.0",data:new Date().toLocaleString("pt-BR"),db:db};
   var blob=new Blob([JSON.stringify(backup,null,2)],{type:"application/json"});
   var url=URL.createObjectURL(blob);var a=document.createElement("a");
   a.href=url;a.download="elabella-backup-"+new Date().toISOString().slice(0,10)+".json";a.click();URL.revokeObjectURL(url);
@@ -1208,29 +1333,22 @@ function aplicarRestore(){
   if(!dadosRestore){alert("Selecione um arquivo primeiro.");return;}
   if(!confirm("Isso vai substituir TODOS os dados. Continuar?"))return;
   db=dadosRestore.db;
-  if(!db.estoqueHist)db.estoqueHist=[];
-  if(!db.dizimo)db.dizimo=[];
+  if(!db.estoqueHist)db.estoqueHist=[];if(!db.dizimo)db.dizimo=[];
   db.clientes.forEach(function(c){if(!c.tel)c.tel="";if(!c.cidade)c.cidade="";});
   localStorage.setItem("db",JSON.stringify(db));dadosRestore=null;
-  document.getElementById("arquivoRestore").value="";
-  alert("Dados restaurados!");render();
+  document.getElementById("arquivoRestore").value="";alert("Dados restaurados!");render();
 }
 function salvarBackupAuto(){
   var backups=JSON.parse(localStorage.getItem("backupsAuto")||"[]");
   backups.unshift({data:new Date().toLocaleString("pt-BR"),snapshot:JSON.stringify(db)});
   if(backups.length>5)backups=backups.slice(0,5);
-  localStorage.setItem("backupsAuto",JSON.stringify(backups));
-  renderListaBackups();
+  localStorage.setItem("backupsAuto",JSON.stringify(backups));renderListaBackups();
 }
 function renderListaBackups(){
   var el=document.getElementById("listaBackups");if(!el)return;
   var backups=JSON.parse(localStorage.getItem("backupsAuto")||"[]");
   if(backups.length===0){el.innerHTML='<span class="small">Nenhum backup automático ainda.</span>';return;}
-  el.innerHTML=backups.map(function(b,i){
-    return'<div style="display:flex;justify-content:space-between;align-items:center;padding:8px 0;border-bottom:1px solid rgba(255,255,255,0.07);">'+
-      '<span class="small">'+b.data+'</span>'+
-      '<button style="font-size:12px;padding:6px 12px;background:#2563eb;margin:0;" onclick="restaurarAuto('+i+')">Restaurar</button></div>';
-  }).join("");
+  el.innerHTML=backups.map(function(b,i){return'<div style="display:flex;justify-content:space-between;align-items:center;padding:8px 0;border-bottom:1px solid rgba(255,255,255,0.07);"><span class="small">'+b.data+'</span><button style="font-size:12px;padding:6px 12px;background:#2563eb;margin:0;" onclick="restaurarAuto('+i+')">Restaurar</button></div>';}).join("");
 }
 function restaurarAuto(i){
   var backups=JSON.parse(localStorage.getItem("backupsAuto")||"[]");if(!backups[i])return;
@@ -1246,19 +1364,15 @@ function restaurarAuto(i){
 // ============================================================
 function renderCharts(){
   var meses=ultimos6meses();var labels=meses.map(nomeMes);
-  var dataVendas=meses.map(function(m){return db.vendas.filter(function(v){return mesAno(v.data)===m;}).reduce(function(t,v){return t+v.valor;},0);});
-  var dataLucro=meses.map(function(m){return db.vendas.filter(function(v){return mesAno(v.data)===m;}).reduce(function(t,v){return t+v.lucro;},0);});
-  var dataEnt=meses.map(function(m){return db.financeiro.filter(function(f){return mesAno(f.data)===m&&f.tipo==="entrada";}).reduce(function(t,f){return t+f.valor;},0);});
-  var dataSai=meses.map(function(m){return db.financeiro.filter(function(f){return mesAno(f.data)===m&&f.tipo==="saida";}).reduce(function(t,f){return t+f.valor;},0);});
+  var dV=meses.map(function(m){return db.vendas.filter(function(v){return mesAno(v.data)===m;}).reduce(function(t,v){return t+v.valor;},0);});
+  var dL=meses.map(function(m){return db.vendas.filter(function(v){return mesAno(v.data)===m;}).reduce(function(t,v){return t+v.lucro;},0);});
+  var dE=meses.map(function(m){return db.financeiro.filter(function(f){return mesAno(f.data)===m&&f.tipo==="entrada";}).reduce(function(t,f){return t+f.valor;},0);});
+  var dS=meses.map(function(m){return db.financeiro.filter(function(f){return mesAno(f.data)===m&&f.tipo==="saida";}).reduce(function(t,f){return t+f.valor;},0);});
   var gc="rgba(255,255,255,0.05)",tc="#6b7280";
   if(chartVL)chartVL.destroy();
-  chartVL=new Chart(document.getElementById("chartVendasLucro").getContext("2d"),{type:"bar",
-    data:{labels:labels,datasets:[{label:"Vendas",data:dataVendas,backgroundColor:"rgba(232,121,160,0.8)",borderRadius:6},{label:"Lucro",data:dataLucro,backgroundColor:"rgba(74,222,128,0.8)",borderRadius:6}]},
-    options:{responsive:true,plugins:{legend:{labels:{color:tc,font:{size:11}}}},scales:{y:{ticks:{color:tc,callback:function(v){return"R$"+v;}},grid:{color:gc}},x:{ticks:{color:tc},grid:{display:false}}}}});
+  chartVL=new Chart(document.getElementById("chartVendasLucro").getContext("2d"),{type:"bar",data:{labels:labels,datasets:[{label:"Vendas",data:dV,backgroundColor:"rgba(232,121,160,0.8)",borderRadius:6},{label:"Lucro",data:dL,backgroundColor:"rgba(74,222,128,0.8)",borderRadius:6}]},options:{responsive:true,plugins:{legend:{labels:{color:tc,font:{size:11}}}},scales:{y:{ticks:{color:tc,callback:function(v){return"R$"+v;}},grid:{color:gc}},x:{ticks:{color:tc},grid:{display:false}}}}});
   if(chartFin)chartFin.destroy();
-  chartFin=new Chart(document.getElementById("chartFinanceiro").getContext("2d"),{type:"line",
-    data:{labels:labels,datasets:[{label:"Entradas",data:dataEnt,borderColor:"#4ade80",backgroundColor:"rgba(74,222,128,0.1)",tension:.3,fill:true,pointBackgroundColor:"#4ade80"},{label:"Saídas",data:dataSai,borderColor:"#f87171",backgroundColor:"rgba(248,113,113,0.1)",tension:.3,fill:true,pointBackgroundColor:"#f87171"}]},
-    options:{responsive:true,plugins:{legend:{labels:{color:tc,font:{size:11}}}},scales:{y:{ticks:{color:tc,callback:function(v){return"R$"+v;}},grid:{color:gc}},x:{ticks:{color:tc},grid:{display:false}}}}});
+  chartFin=new Chart(document.getElementById("chartFinanceiro").getContext("2d"),{type:"line",data:{labels:labels,datasets:[{label:"Entradas",data:dE,borderColor:"#4ade80",backgroundColor:"rgba(74,222,128,0.1)",tension:.3,fill:true,pointBackgroundColor:"#4ade80"},{label:"Saídas",data:dS,borderColor:"#f87171",backgroundColor:"rgba(248,113,113,0.1)",tension:.3,fill:true,pointBackgroundColor:"#f87171"}]},options:{responsive:true,plugins:{legend:{labels:{color:tc,font:{size:11}}}},scales:{y:{ticks:{color:tc,callback:function(v){return"R$"+v;}},grid:{color:gc}},x:{ticks:{color:tc},grid:{display:false}}}}});
 }
 
 // ============================================================
@@ -1280,13 +1394,10 @@ function render(){
     return'<div class="card" onclick="abrirProduto('+i+')"><b>'+p.nome+'</b> <span class="badge '+(p.estoque>0?'badge-azul':'badge-vermelho')+'">'+(p.estoque>0?'Estoque: '+p.estoque:'Sem estoque')+'</span></div>';
   }).join("")||'<div class="card small" style="color:#6b7280;">Nenhum produto cadastrado</div>';
   document.getElementById("clienteVenda").innerHTML=db.clientes.map(function(c){return'<option>'+c.nome+'</option>';}).join("");
-  document.getElementById("produtoVenda").innerHTML=db.produtos.map(function(p){return'<option>'+p.nome+'</option>';}).join("");
-  atualizarInfoVenda();
-  renderVendas();
-  renderFin();
-  renderDizimo();
+  renderVendas();renderFin();renderDizimo();
   if(tela==="dashboard")renderCharts();
   if(tela==="backup")renderListaBackups();
+  if(tela==="vendasTela")renderCarrinho();
 }
 </script>
 </body>
