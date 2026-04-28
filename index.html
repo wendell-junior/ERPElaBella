@@ -605,7 +605,7 @@ function normalizarPagamentosVenda(v){
 function calcularLucroFinalPedido(p){
   var totalDespesas=arred((p.despesasAdicionais||[]).reduce(function(t,d){return t+n(d.valor);},0));
   var desconto=arred(n(p.desconto||0));
-  return arred((n(p.totalVenda)||0)-desconto-totalDespesas-(n(p.totalCusto)||0));
+  return arred((n(p.totalVenda)||0)-totalDespesas-(n(p.totalCusto)||0)+desconto);
 }
 function calcularLucroPrevistoPedido(p){
   var totalDespesas=arred((p.despesasAdicionais||[]).reduce(function(t,d){return t+n(d.valor);},0));
@@ -616,6 +616,50 @@ function totalQtdPedido(itens){
 }
 function totalDespesaPedido(){
   return arred(coletarDespesasPedido().reduce(function(t,d){return t+n(d.valor);},0));
+}
+
+function calcularRateioPedido(p){
+  var itens=(p&&p.itens)||[];
+  var totalQtd=itens.reduce(function(t,it){return t+Math.max(1,n(it.qtd)||1);},0);
+  totalQtd=Math.max(1,totalQtd);
+  var totalDesp=n(p&&p.totalDespesasAdicionais||0);
+  var desconto=n(p&&p.finalizado?p.desconto:0);
+  var despPorPeca=arred(totalDesp/totalQtd);
+  var descPorPeca=arred(desconto/totalQtd);
+  return {totalQtd:totalQtd,totalDesp:totalDesp,desconto:desconto,despPorPeca:despPorPeca,descPorPeca:descPorPeca};
+}
+function calcularItensPedidoDetalhados(p){
+  var r=calcularRateioPedido(p);
+  var itens=(p&&p.itens)||[];
+  return itens.map(function(it){
+    var qtd=Math.max(1,n(it.qtd)||1);
+    var custoBase=n(it.custo);
+    var vendaBase=n(it.venda);
+    var custoUnitReal=arred(custoBase+r.despPorPeca-r.descPorPeca);
+    var lucroUnitReal=arred(vendaBase-custoUnitReal);
+    return {
+      nome:it.nome,
+      custo:custoBase,
+      venda:vendaBase,
+      qtd:qtd,
+      custoUnitReal:custoUnitReal,
+      lucroUnitReal:lucroUnitReal,
+      custoTotalReal:arred(custoUnitReal*qtd),
+      lucroTotalReal:arred(lucroUnitReal*qtd),
+      rateioDespPorPeca:r.despPorPeca,
+      rateioDescPorPeca:r.descPorPeca
+    };
+  });
+}
+function produtoCustoExibido(p){
+  return arred(n(p&&p.custoAjustado!=null?p.custoAjustado:p&&p.custo));
+}
+function produtoLucroExibido(p){
+  if(p&&p.lucroAjustado!=null)return arred(n(p.lucroAjustado));
+  return arred(n(p&&p.preco!=null?p.preco:0)-produtoCustoExibido(p));
+}
+function produtoPrecoExibido(p){
+  return arred(n(p&&p.precoAjustado!=null?p.precoAjustado:p&&p.preco));
 }
 
 function n(v){v=parseFloat(v);return isNaN(v)?0:v;}
@@ -1181,9 +1225,9 @@ function abrirProduto(i){
     '<div class="card"><div style="font-size:18px;font-weight:700;margin-bottom:8px;">'+p.nome+'</div>'+
     '<div style="display:grid;grid-template-columns:1fr 1fr;gap:6px;margin-bottom:4px;">'+
       '<div class="small">Estoque atual<br><b style="font-size:16px;color:#93c5fd;">'+p.estoque+' un.</b></div>'+
-      '<div class="small">Lucro/unidade<br><b style="font-size:16px;color:#4ade80;">'+fmt(p.preco-p.custo)+'</b></div>'+
-      '<div class="small">Custo<br><b>'+fmt(p.custo)+'</b></div>'+
-      '<div class="small">Preço de venda<br><b>'+fmt(p.preco)+'</b></div>'+
+      '<div class="small">Lucro/unidade<br><b style="font-size:16px;color:#4ade80;">'+fmt(produtoLucroExibido(p))+'</b></div>'+
+      '<div class="small">Custo<br><b>'+fmt(produtoCustoExibido(p))+'</b></div>'+
+      '<div class="small">Preço de venda<br><b>'+fmt(produtoPrecoExibido(p))+'</b></div>'+
     '</div></div>'+
     '<div class="row" style="margin-bottom:10px;">'+
       '<button class="btn-primary" onclick="editarProduto('+i+')">Editar</button>'+
@@ -1219,8 +1263,11 @@ function atualizarInfoCarrinho(){
   var nome=document.getElementById("selectProdutoCarrinho").value;
   var p=db.produtos.find(function(x){return x.nome===nome;});
   if(p){
+    var preco=produtoPrecoExibido(p);
+    var custo=produtoCustoExibido(p);
+    var lucro=produtoLucroExibido(p);
     document.getElementById("infoCarrinhoProduto").innerHTML=
-      'Preço: <b style="color:#e879a0;">'+fmt(p.preco)+'</b> | Custo: '+fmt(p.custo)+' | Lucro base: <b style="color:#4ade80;">'+fmt(p.preco-p.custo)+'</b>';
+      'Preço: <b style="color:#e879a0;">'+fmt(preco)+'</b> | Custo: '+fmt(custo)+' | Lucro base: <b style="color:#4ade80;">'+fmt(lucro)+'</b>';
   }
 }
 function addDespesaCarrinho(){
@@ -1238,10 +1285,18 @@ function confirmarAdicionarProduto(){
   if(!p){alert("Selecione um produto.");return;}
   if(p.estoque<=0){alert("Produto sem estoque!");return;}
 
+  var preco=produtoPrecoExibido(p);
+  var custo=produtoCustoExibido(p);
+  var lucro=produtoLucroExibido(p);
+
   // Sem despesas por peça — lucroReal provisório sem despesas gerais (recalculado no resumo)
   carrinho.push({
-    nome:p.nome,preco:p.preco,custo:p.custo,
-    despesas:[],lucroReal:p.preco-p.custo
+    nome:p.nome,
+    preco:preco,
+    custo:custo,
+    lucroBase:lucro,
+    despesas:[],
+    lucroReal:lucro
   });
 
   document.getElementById("formAdicionarProduto").classList.add("hidden");
@@ -1305,9 +1360,9 @@ function renderCarrinho(){
 
   lista.innerHTML=carrinho.map(function(item,i){
     return'<div class="carrinho-item">'+
-      '<button class="ci-rm" onclick="removerDoCarrinho('+i+')">✕</button>'+
-      '<div class="ci-nome">'+item.nome+'</div>'+
-      '<div class="ci-info">Preço: <b>'+fmt(item.preco)+'</b> | Custo: '+fmt(item.custo)+'</div>'+
+      '<button class="ci-rm" onclick="removerDoCarrinho('+i+')">✕</button>'+ 
+      '<div class="ci-nome">'+item.nome+'</div>'+ 
+      '<div class="ci-info">Preço: <b>'+fmt(item.preco)+'</b> | Custo: '+fmt(item.custo)+' | Lucro base: <b style="color:#4ade80;">'+fmt(item.lucroBase!=null?item.lucroBase:(item.preco-item.custo))+'</b></div>'+ 
     '</div>';
   }).join("");
 
@@ -1365,9 +1420,9 @@ function registrarVenda(){
   var qtdPecas=carrinho.length;
   var despPorPeca=qtdPecas>0?totalDespGerais/qtdPecas:0;
 
-  var totalCompra=carrinho.reduce(function(t,it){return t+it.preco;},0);
-  var totalCusto=carrinho.reduce(function(t,it){return t+it.custo;},0);
-  var totalLucroReal=carrinho.reduce(function(t,it){return t+(it.preco-it.custo-despPorPeca);},0);
+  var totalCompra=carrinho.reduce(function(t,it){return t+n(it.preco);},0);
+  var totalCusto=carrinho.reduce(function(t,it){return t+n(it.custo);},0);
+  var totalLucroReal=carrinho.reduce(function(t,it){return t+(n(it.preco)-n(it.custo)-despPorPeca);},0);
 
   var parcelasArr=[];
   if(tipo==="avista"){
@@ -1388,7 +1443,9 @@ function registrarVenda(){
 
   // Montar itens para salvar com lucroReal por peça já calculado
   var itensDb=carrinho.map(function(it){
-    return{nome:it.nome,preco:it.preco,custo:it.custo,despesas:[],lucroReal:parseFloat((it.preco-it.custo-despPorPeca).toFixed(2))};
+    var precoAjustado=n(it.preco);
+    var custoAjustado=n(it.custo);
+    return{nome:it.nome,preco:precoAjustado,custo:custoAjustado,despesas:[],lucroReal:parseFloat((precoAjustado-custoAjustado-despPorPeca).toFixed(2))};
   });
 
   // Salvar venda
@@ -1666,24 +1723,30 @@ function recalcularResumoPedido(){
   var totalCusto=arred(itens.reduce(function(t,it){return t+(n(it.custo)*n(it.qtd));},0));
   var totalVenda=arred(itens.reduce(function(t,it){return t+(n(it.venda)*n(it.qtd));},0));
   var totalDesp=arred(despesas.reduce(function(t,d){return t+n(d.valor);},0));
-  var qtdTotal=totalQtdPedido(itens)||1;
-  var lucro=arred(totalVenda-totalCusto-totalDesp);
+  var tipo=document.getElementById("pedidoTipoDesconto")?document.getElementById("pedidoTipoDesconto").value:"valor";
+  var raw=n(document.getElementById("pedidoDescontoValor")?document.getElementById("pedidoDescontoValor").value:0);
+  var desconto=tipo==="percentual"?arred((totalCusto*raw)/100):arred(raw);
+  if(desconto<0)desconto=0;
+  if(desconto>totalCusto)desconto=totalCusto;
+  var qtdTotal=Math.max(1,totalQtdPedido(itens));
+  var rateioDesp=arred(totalDesp/qtdTotal);
+  var rateioDesc=arred(desconto/qtdTotal);
+  var custoLiquido=arred(totalCusto+totalDesp-desconto);
+  var lucro=arred(totalVenda-custoLiquido);
+  var lucroUnitMedio=arred(lucro/qtdTotal);
+  var custoUnitMedio=arred(custoLiquido/qtdTotal);
   var el1=document.getElementById("pedidoTotalCusto"); if(el1)el1.innerText=fmt(totalCusto);
   var elDesp=document.getElementById("pedidoTotalDesp"); if(elDesp)elDesp.innerText=fmt(totalDesp);
   var el2=document.getElementById("pedidoTotalVenda"); if(el2)el2.innerText=fmt(totalVenda);
   var el3=document.getElementById("pedidoLucro"); if(el3)el3.innerText=fmt(lucro);
   var elF=document.getElementById("pedidoFinalLucro"); if(elF)elF.innerText=fmt(lucro);
   var elFD=document.getElementById("pedidoFinalDesp"); if(elFD)elFD.innerText=fmt(totalDesp);
-  var elDesc=document.getElementById("pedidoFinalDesc"); if(elDesc){
-    var tipo=document.getElementById("pedidoTipoDesconto")?document.getElementById("pedidoTipoDesconto").value:"valor";
-    var raw=n(document.getElementById("pedidoDescontoValor")?document.getElementById("pedidoDescontoValor").value:0);
-    var desconto=tipo==="percentual"?arred((totalVenda*raw)/100):arred(raw);
-    if(desconto<0)desconto=0;
-    if(desconto>totalVenda)desconto=totalVenda;
-    elDesc.innerText=fmt(desconto);
-    if(document.getElementById("pedidoResumoDesconto"))document.getElementById("pedidoResumoDesconto").innerText="Desconto aplicado: "+fmt(desconto)+" | Lucro após desconto e despesas: "+fmt(arred(totalVenda-desconto-totalDesp-totalCusto));
-    if(document.getElementById("pedidoFinalLucro"))document.getElementById("pedidoFinalLucro").innerText=fmt(arred(totalVenda-desconto-totalDesp-totalCusto));
-  }
+  var elDesc=document.getElementById("pedidoFinalDesc"); if(elDesc)elDesc.innerText=fmt(desconto);
+  if(document.getElementById("pedidoResumoDesconto"))document.getElementById("pedidoResumoDesconto").innerText="Desconto aplicado: "+fmt(desconto)+" | Rateio por peça: despesas "+fmt(rateioDesp)+" e desconto "+fmt(rateioDesc)+" | Lucro após rateio: "+fmt(lucro);
+  if(document.getElementById("pedidoFinalLucro"))document.getElementById("pedidoFinalLucro").innerText=fmt(lucro);
+  if(document.getElementById("pedidoFinalDesp"))document.getElementById("pedidoFinalDesp").innerText=fmt(totalDesp);
+  if(document.getElementById("pedidoTotalCusto"))document.getElementById("pedidoTotalCusto").title="Custo médio unitário com rateio: "+fmt(custoUnitMedio);
+  if(document.getElementById("pedidoTotalVenda"))document.getElementById("pedidoTotalVenda").title="Lucro médio unitário: "+fmt(lucroUnitMedio)+" | Rateio por peça: despesas "+fmt(rateioDesp)+" / desconto "+fmt(rateioDesc);
 }
 function preencherFormularioPedido(p){
   document.getElementById("pedidoLoja").value=p.loja||"";
@@ -1800,14 +1863,15 @@ function atualizarResumoDescontoPedido(){
   if(!p||!el)return;
   var tipo=document.getElementById("pedidoTipoDesconto").value;
   var raw=n(document.getElementById("pedidoDescontoValor").value);
-  var desconto=tipo==="percentual"?arred((p.totalVenda*raw)/100):arred(raw);
+  var desconto=tipo==="percentual"?arred((p.totalCusto*raw)/100):arred(raw);
   if(desconto<0)desconto=0;
-  if(desconto>p.totalVenda)desconto=p.totalVenda;
+  if(desconto>p.totalCusto)desconto=p.totalCusto;
   var totalDesp=n(p.totalDespesasAdicionais||0);
-  el.innerText="Desconto aplicado: "+fmt(desconto)+" | Valor final: "+fmt(arred(p.totalVenda-desconto));
+  var lucroFinal=arred((p.totalVenda||0)-(p.totalCusto||0)+desconto-totalDesp);
+  el.innerText="Desconto aplicado: "+fmt(desconto)+" | Valor final a pagar: "+fmt(arred((p.totalCusto||0)-desconto))+" | Lucro final: "+fmt(lucroFinal);
   if(document.getElementById("pedidoFinalDesc"))document.getElementById("pedidoFinalDesc").innerText=fmt(desconto);
   if(document.getElementById("pedidoFinalDesp"))document.getElementById("pedidoFinalDesp").innerText=fmt(totalDesp);
-  if(document.getElementById("pedidoFinalLucro"))document.getElementById("pedidoFinalLucro").innerText=fmt(arred(p.totalVenda-desconto-totalDesp-p.totalCusto));
+  if(document.getElementById("pedidoFinalLucro"))document.getElementById("pedidoFinalLucro").innerText=fmt(lucroFinal);
 }
 function finalizarPedido(i){
   var p=db.pedidos[i];
@@ -1829,32 +1893,75 @@ function confirmarFinalizarPedido(){
   var forma=document.getElementById("pedidoFormaPagamento").value.trim()||"Não informado";
   var tipoDesc=document.getElementById("pedidoTipoDesconto").value;
   var raw=n(document.getElementById("pedidoDescontoValor").value);
-  var desconto=tipoDesc==="percentual"?arred((p.totalVenda*raw)/100):arred(raw);
+  var desconto=tipoDesc==="percentual"?arred((p.totalCusto*raw)/100):arred(raw);
   if(desconto<0)desconto=0;
-  if(desconto>p.totalVenda)desconto=p.totalVenda;
-  var valorFinal=arred(p.totalVenda-desconto);
+  if(desconto>p.totalCusto)desconto=p.totalCusto;
   var totalDespesas=n(p.totalDespesasAdicionais||0);
+  var totalQtd=Math.max(1,totalQtdPedido(p.itens||[]));
+  var rateioDesp=arred(totalDespesas/totalQtd);
+  var rateioDesc=arred(desconto/totalQtd);
+  var valorFinal=arred(p.totalCusto-desconto);
   p.finalizado=true;
   p.formaPagamento=forma;
   p.desconto=desconto;
   p.descontoTipo=tipoDesc;
   p.descontoEntrada=raw;
   p.valorFinal=valorFinal;
-  p.lucroFinal=arred(valorFinal-totalDespesas-p.totalCusto);
+  p.lucroFinal=arred(p.totalVenda-valorFinal-totalDespesas);
+  p.rateioDespPorPeca=rateioDesp;
+  p.rateioDescPorPeca=rateioDesc;
+  p.itens=(p.itens||[]).map(function(it){
+    var qtd=Math.max(1,n(it.qtd)||1);
+    var custoBase=n(it.custo);
+    var vendaBase=n(it.venda);
+    var custoUnitReal=arred(custoBase+rateioDesp-rateioDesc);
+    var lucroUnitReal=arred(vendaBase-custoUnitReal);
+    return {
+      nome:it.nome,
+      custo:custoBase,
+      venda:vendaBase,
+      qtd:qtd,
+      custoUnitReal:custoUnitReal,
+      lucroUnitReal:lucroUnitReal,
+      custoTotalReal:arred(custoUnitReal*qtd),
+      lucroTotalReal:arred(lucroUnitReal*qtd),
+      rateioDespPorPeca:rateioDesp,
+      rateioDescPorPeca:rateioDesc
+    };
+  });
   p.dataFinalizado=hoje();
   pedidoFinalizarIdx=null;
   fecharModal("modalPedidoFinalizar");
 
-  p.itens.forEach(function(it){
+  var itensDetalhados=calcularItensPedidoDetalhados(p);
+  p.itens.forEach(function(it,idx){
+    var detalhe=itensDetalhados[idx]||{custoUnitReal:n(it.custo),lucroUnitReal:arred(n(it.venda)-n(it.custo))};
     var produto=db.produtos.find(function(x){return x.nome.toLowerCase()===it.nome.toLowerCase();});
     if(produto){
       produto.estoque+=it.qtd;
-      if(it.custo>0)produto.custo=it.custo;
-      if(it.venda>0)produto.preco=it.venda;
+      produto.custoAjustado=detalhe.custoUnitReal;
+      produto.precoAjustado=n(it.venda);
+      produto.lucroAjustado=detalhe.lucroUnitReal;
+      produto.ultimaEntradaPedido=p.loja;
+      produto.ultimaEntradaPedidoData=hoje();
+      if(it.custo>0&&produto.custoOriginal==null)produto.custoOriginal=it.custo;
+      if(it.venda>0&&produto.precoOriginal==null)produto.precoOriginal=it.venda;
     } else {
-      db.produtos.push({nome:it.nome,custo:it.custo,preco:it.venda,estoque:it.qtd});
+      db.produtos.push({
+        nome:it.nome,
+        custo:it.custo,
+        preco:it.venda,
+        estoque:it.qtd,
+        custoOriginal:it.custo,
+        precoOriginal:it.venda,
+        custoAjustado:detalhe.custoUnitReal,
+        precoAjustado:n(it.venda),
+        lucroAjustado:detalhe.lucroUnitReal,
+        ultimaEntradaPedido:p.loja,
+        ultimaEntradaPedidoData:hoje()
+      });
     }
-    db.estoqueHist.push({produto:it.nome,tipo:"entrada",qtd:it.qtd,obs:"Pedido finalizado - "+p.loja,data:hoje()});
+    db.estoqueHist.push({produto:it.nome,tipo:"entrada",qtd:it.qtd,obs:"Pedido finalizado - "+p.loja+" | custo real "+fmt(detalhe.custoUnitReal)+" | lucro real "+fmt(detalhe.lucroUnitReal),data:hoje()});
   });
 
   db.financeiro.push({
@@ -1862,7 +1969,7 @@ function confirmarFinalizarPedido(){
     valor:arred(valorFinal+totalDespesas),
     tipo:"saida",
     data:hoje(),
-    _detalhe:{pedido:true,loja:p.loja,itens:p.itens,despesasAdicionais:p.despesasAdicionais||[],totalCusto:p.totalCusto,totalVenda:p.totalVenda,desconto:desconto,descontoTipo:tipoDesc,descontoEntrada:raw,valorFinal:valorFinal,lucroFinal:p.lucroFinal,formaPagamento:forma}
+    _detalhe:{pedido:true,loja:p.loja,itens:p.itens,itensDetalhados:itensDetalhados,despesasAdicionais:p.despesasAdicionais||[],totalCusto:p.totalCusto,totalVenda:p.totalVenda,desconto:desconto,descontoTipo:tipoDesc,descontoEntrada:raw,valorFinal:valorFinal,lucroFinal:p.lucroFinal,formaPagamento:forma,rateioDespPorPeca:rateioDesp,rateioDescPorPeca:rateioDesc}
   });
 
   save();
@@ -1878,10 +1985,25 @@ function renderPedidos(){
   if(!el)return;
   if(db.pedidos.length===0){el.innerHTML='<div class="card small" style="color:#6b7280;">Nenhum pedido registrado</div>';return;}
   el.innerHTML=db.pedidos.map(function(p,i){
-    var itensTxt=p.itens.map(function(it){return '<div class="small">• '+it.nome+' — qtd '+it.qtd+' | custo '+fmt(it.custo)+' | venda '+fmt(it.venda)+'</div>';}).join("");
+    var detalheItens=(p.finalizado?calcularItensPedidoDetalhados(p):(p.itens||[]).map(function(it){
+      var qtd=Math.max(1,n(it.qtd)||1);
+      var custoUnit=n(it.custo);
+      var vendaUnit=n(it.venda);
+      return {nome:it.nome,qtd:qtd,custo:custoUnit,venda:vendaUnit,custoUnitReal:custoUnit,lucroUnitReal:arred(vendaUnit-custoUnit),custoTotalReal:arred(custoUnit*qtd),lucroTotalReal:arred((vendaUnit-custoUnit)*qtd),rateioDespPorPeca:0,rateioDescPorPeca:0};
+    }));
+    var itensTxt=(detalheItens.length>0)?detalheItens.map(function(it){
+      var base='<div class="small">• '+it.nome+' — qtd '+it.qtd+' | custo '+fmt(it.custo)+' | venda '+fmt(it.venda);
+      if(p.finalizado){
+        base+=' | custo real unit. '+fmt(it.custoUnitReal)+' | lucro real unit. '+fmt(it.lucroUnitReal);
+      }
+      base+='</div>';
+      return base;
+    }).join(""):'<div class="small" style="color:#6b7280;">Sem peças</div>';
     var despTxt=(p.despesasAdicionais&&p.despesasAdicionais.length>0)?p.despesasAdicionais.map(function(d){return '<div class="small">• '+d.desc+' — '+fmt(d.valor)+'</div>';}).join(""):'<div class="small" style="color:#6b7280;">Sem despesas adicionais</div>';
     var badge=p.finalizado?'<span class="badge badge-verde">Finalizado</span>':'<span class="badge badge-amarelo">Aberto</span>';
     var lucroBase=p.finalizado?p.lucroFinal:calcularLucroPrevistoPedido(p);
+    var rateioInfo=p.finalizado?('<div class="small" style="margin-top:6px;color:#9ca3af;">Rateio por peça: despesa '+fmt(n(p.rateioDespPorPeca||0))+' | desconto '+fmt(n(p.rateioDescPorPeca||0))+'</div>') : '';
+    var pagamentoInfo=p.finalizado?('<div class="small" style="margin-top:6px;">Pagamento: '+p.formaPagamento+' | Desconto: '+(p.descontoTipo==="percentual"?(p.descontoEntrada+"% "):'')+fmt(p.desconto)+' | Despesas: '+fmt(p.totalDespesasAdicionais||0)+'</div>') : '';
     return '<div class="card">'+
       '<div style="display:flex;justify-content:space-between;align-items:flex-start;">'+
         '<div><b>'+p.loja+'</b> '+badge+'<br><span class="small">'+p.data+'</span></div>'+
@@ -1889,7 +2011,8 @@ function renderPedidos(){
       '</div>'+
       '<div style="margin-top:6px;">'+itensTxt+'</div>'+
       '<div style="margin-top:6px;">'+despTxt+'</div>'+
-      (p.finalizado?'<div class="small" style="margin-top:6px;">Pagamento: '+p.formaPagamento+' | Desconto: '+(p.descontoTipo==="percentual"?(p.descontoEntrada+"% "):'')+fmt(p.desconto)+' | Despesas: '+fmt(p.totalDespesasAdicionais||0)+'</div>':'')+
+      rateioInfo+
+      pagamentoInfo+
       '<div class="acoes">'+
         '<button class="btn-warning" onclick="abrirEdicaoPedido('+i+')">Editar</button>'+
         (!p.finalizado?'<button class="btn-green" onclick="finalizarPedido('+i+')">Finalizar</button>':'')+
@@ -1931,9 +2054,11 @@ function htmlDetalhe(det){
   if(det.itens&&det.itens.length>0){
     html+='<div style="color:#6b7280;margin-bottom:3px;">Peças:</div>';
     det.itens.forEach(function(it){
+      var precoItem = n(it.venda!=null ? it.venda : (it.preco!=null ? it.preco : 0));
+      var lucroItem = n(it.lucroUnitReal!=null ? it.lucroUnitReal : (it.lucroReal!=null ? it.lucroReal : 0));
       html+='<div style="display:flex;justify-content:space-between;padding:2px 0;">'+
         '<span>• '+it.nome+'</span>'+
-        '<span style="color:#e879a0;">'+fmt(it.preco)+'<span style="color:#4ade80;margin-left:6px;">(lucro: '+fmt(it.lucroReal)+')</span></span>'+
+        '<span style="color:#e879a0;">'+fmt(precoItem)+'<span style="color:#4ade80;margin-left:6px;">(lucro: '+fmt(lucroItem)+')</span></span>'+
       '</div>';
     });
   }
@@ -2140,7 +2265,10 @@ function render(){
       (c.tel?'<div class="small" style="margin-top:3px;">'+c.tel+'</div>':'')+
     '</div>';}).join("")||'<div class="card small" style="color:#6b7280;">Nenhum cliente cadastrado</div>';
   document.getElementById("listaProdutos").innerHTML=db.produtos.filter(function(p){return p.nome.toLowerCase().includes(buscaP);}).map(function(p,i){
-    return'<div class="card" onclick="abrirProduto('+i+')"><b>'+p.nome+'</b> <span class="badge '+(p.estoque>0?'badge-azul':'badge-vermelho')+'">'+(p.estoque>0?'Estoque: '+p.estoque:'Sem estoque')+'</span></div>';
+    return'<div class="card" onclick="abrirProduto('+i+')">'+
+      '<b>'+p.nome+'</b> <span class="badge '+(p.estoque>0?'badge-azul':'badge-vermelho')+'">'+(p.estoque>0?'Estoque: '+p.estoque:'Sem estoque')+'</span>'+ 
+      '<div class="small" style="margin-top:4px;">Custo real: <b>'+fmt(produtoCustoExibido(p))+'</b> | Venda: <b>'+fmt(produtoPrecoExibido(p))+'</b> | Lucro: <b style="color:#4ade80;">'+fmt(produtoLucroExibido(p))+'</b></div>'+ 
+    '</div>';
   }).join("")||'<div class="card small" style="color:#6b7280;">Nenhum produto cadastrado</div>';
   document.getElementById("clienteVenda").innerHTML=db.clientes.map(function(c){return'<option>'+c.nome+'</option>';}).join("");
   renderVendas();renderPedidos();renderFin();renderDizimo();
